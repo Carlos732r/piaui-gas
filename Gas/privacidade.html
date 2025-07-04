@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Política de Privacidade - Piauí Gás</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo img {
+      max-height: 100px;
+    }
+
+    .logo strong {
+      color: red;
+      font-size: 1.6em;
+    }
+
+    .logo small {
+      font-size: 0.9em;
+      color: red;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: red;
+      font-weight: bold;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 5px;
+      font-size: 1.1em;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background-color: blue;
+    }
+
+    .botao-gas {
+      background-color: #0033ff;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.1em;
+    }
+
+    .botao-gas img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .horario-extra {
+      text-align: center;
+      padding: 30px 15px;
+      font-size: 1.1em;
+      color: #222;
+      background-color: #fafafa;
+    }
+
+    .horario-extra strong {
+      color: red;
+      font-size: 1.2em;
+    }
+
+    footer {
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 20px;
+      font-size: 1em;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .botao-gas {
+        align-self: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="menu">
+    <div class="logo">
+      <img src="logo.png" alt="Logo Piauí Gás">
+      <strong>Piauí Gás</strong>
+      <small>Distribuidora</small>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html">Sobre Nós</a>
+      <a href="index.html">Produtos</a>
+      <a href="index.html">Contato</a>
+    </nav>
+    <a class="botao-gas" href="https://wa.me/5518997146344" target="_blank">
+      <img src="iconewhats.svg" alt="WhatsApp"> Peça Gás
+    </a>
+  </header>
+
+  <div class="container">
+    <h1>Política de Privacidade</h1>
+
+    <p>A Piauí Gás valoriza a sua privacidade. Este site não coleta, armazena ou compartilha dados pessoais dos visitantes.</p>
+
+    <p>O único meio de contato disponível é o <strong>link para o WhatsApp</strong>, onde o usuário pode iniciar uma conversa diretamente com nossa equipe. Ao clicar no link, o usuário será redirecionado para o site ou aplicativo do WhatsApp, que possui sua própria <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank">Política de Privacidade</a>.</p>
+
+    <p>Nosso site pode conter links para sites externos que não são operados por nós. Esteja ciente de que não temos controle sobre o conteúdo e práticas desses sites e não podemos aceitar responsabilidade por suas respectivas políticas de privacidade.</p>
+
+    <p>Este site não utiliza formulários, cookies personalizados, rastreadores ou qualquer sistema de análise de comportamento do usuário.</p>
+
+    <p>O uso continuado de nosso site será considerado como aceitação de nossas práticas em torno de privacidade e informações pessoais. Se você tiver alguma dúvida sobre como lidamos com dados do usuário e informações pessoais, entre em contato conosco.</p>
+  </div>
+
+  <div class="horario-extra">
+    <strong>Horário de Atendimento</strong><br>
+    Segunda à Sábado 08:00h às 20:00h<br>
+    Domingos e Feriados 08:00h às 14:00h<br><br>
+    *Feriados sujeito a alteração.
+  </div>
+
+  <footer>
+    © 2025 Piauí Gás - Teodoro Sampaio. Todos os direitos reservados.
+  </footer>
+  
+</body>
+</html>
+
