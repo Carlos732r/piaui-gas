@@ -34,17 +34,7 @@
     }
 
     .logo img {
-      max-height: 100px;
-    }
-
-    .logo strong {
-      color: red;
-      font-size: 1.6em;
-    }
-
-    .logo small {
-      font-size: 0.9em;
-      color: red;
+      max-height: 150px;
     }
 
     .nav-links {
@@ -89,6 +79,20 @@
     .botao-gas img {
       width: 24px;
       height: 24px;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 4px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: red;
+      transition: 0.3s;
     }
 
     .container {
@@ -137,18 +141,43 @@
 
     @media (max-width: 768px) {
       .menu {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        flex-wrap: wrap;
       }
 
       .nav-links {
-        flex-wrap: wrap;
+        display: none;
+        width: 100%;
+        flex-direction: column;
         gap: 15px;
+        margin-top: 15px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
       }
 
       .botao-gas {
-        align-self: flex-end;
+        order: 2;
+      }
+
+      .hamburger {
+        order: 3;
       }
     }
   </style>
@@ -157,9 +186,7 @@
 
   <header class="menu">
     <div class="logo">
-      <img src="logo.png" alt="Logo Piauí Gás">
-      <strong>Piauí Gás</strong>
-      <small>Distribuidora</small>
+      <img src="Gas/logo.png" alt="Logo Piauí Gás">
     </div>
     <nav class="nav-links">
       <a href="index.html">Home</a>
@@ -168,8 +195,13 @@
       <a href="index.html">Contato</a>
     </nav>
     <a class="botao-gas" href="https://wa.me/5518997146344" target="_blank">
-      <img src="iconewhats.svg" alt="WhatsApp"> Peça Gás
+      <img src="Gas/iconewhats.svg" alt="WhatsApp"> Peça Gás
     </a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
 
   <div class="container">
@@ -188,15 +220,29 @@
 
   <div class="horario-extra">
     <strong>Horário de Atendimento</strong><br>
-    Segunda à Sábado 08:00h às 20:00h<br>
+    Segunda à Sábado 08:00h às 21:00h<br>
     Domingos e Feriados 08:00h às 14:00h<br><br>
     *Feriados sujeito a alteração.
   </div>
 
-  <footer>
-    © 2025 Piauí Gás - Teodoro Sampaio. Todos os direitos reservados.
+ <footer>
+    <p>
+      Copyright © 2025 Piauí Gás —
+      <a href="privacidade.html" style="color: #333; text-decoration: underline;">Política de Privacidade</a>
+    </p>
+    <p>Dev: <a href="https://www.instagram.com/carlborges_3/" target="_blank" style="color: #333; text-decoration: none; font-weight: bold;">Carlos Henrique N. Borges</a></p>
   </footer>
-  
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      const hamburger = document.querySelector('.hamburger');
+      
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+  </script>
+
 </body>
 </html>
 

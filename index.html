@@ -306,9 +306,43 @@
       font-size: 1.1em;
     }
 
-    /* Estilo do mapa aumentado */
+    /* Seção de localização com mapa e horário */
+    .localizacao-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      text-align: left;
+      justify-content: center;
+    }
+
+    .mapa-container {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .horario-container {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .horario-extra {
+      background-color: #f8f9fa;
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 1.1em;
+      line-height: 1.6;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .horario-extra strong {
+      color: red;
+      font-size: 1.2em;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Estilo do mapa reduzido */
     .mapa {
-      margin-top: 30px;
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -316,7 +350,7 @@
     
     .mapa iframe {
       width: 100%;
-      height: 400px;
+      height: 320px;
       border: none;
       display: block;
     }
@@ -450,6 +484,17 @@
         font-size: 1.1em;
       }
 
+      /* Layout responsivo para localização */
+      .localizacao-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .horario-extra {
+        font-size: 1em;
+        padding: 15px;
+      }
+
       /* Grid mobile - 2 colunas */
       .produtos-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -467,7 +512,7 @@
       }
 
       .mapa iframe {
-        height: 300px;
+        height: 250px;
       }
 
       .whatsapp-fixo {
@@ -523,6 +568,11 @@
         font-size: 1em;
       }
 
+      .horario-extra {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+
       /* Grid mobile pequeno - ainda 2 colunas mas mais compacto */
       .produtos-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -539,7 +589,7 @@
       }
 
       .mapa iframe {
-        height: 250px;
+        height: 200px;
       }
     }
   </style>
@@ -721,11 +771,25 @@
     </div>
   </section>
 
-  <section class="section" id="contato">
-    <h2>Onde Estamos</h2>
-    <p>Av. Cuiabá, 1969 - Centro – Teodoro Sampaio/SP</p>
-    <div class="mapa">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.2924429163914!2d-52.16541782482347!3d-22.530163779495096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94951aa7e1e3e361%3A0x6efb9f3c0c207e8c!2sAv.%20Cuiab%C3%A1%2C%201969%20-%20Centro%2C%20Teodoro%20Sampaio%20-%20SP%2C%2019290-000!5e0!3m2!1spt-BR!2sbr!4v1719521234567" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <section class="section" id="contato" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; text-align: left;">
+    <div style="flex: 1; min-width: 300px;">
+      <h2>Onde Estamos</h2>
+      <p>Av. Cuiabá, 1969 - Centro – Teodoro Sampaio/SP</p>
+      <div class="localizacao-container">
+        <div class="mapa-container">
+          <div class="mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.2924429163914!2d-52.16541782482347!3d-22.530163779495096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94951aa7e1e3e361%3A0x6efb9f3c0c207e8c!2sAv.%20Cuiab%C3%A1%2C%201969%20-%20Centro%2C%20Teodoro%20Sampaio%20-%20SP%2C%2019290-000!5e0!3m2!1spt-BR!2sbr!4v1719521234567" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="flex: 1; min-width: 300px;">
+      <h2>Horário de Atendimento</h2>
+      <div class="horario-extra">
+        <p>Segunda à Sábado 08:00h às 21:00h</p>
+        <p>Domingos e Feriados 08:00h às 14:00h</p>
+        <p style="margin-top: 10px; font-style: italic;">*Feriados sujeito a alteração.</p>
+      </div>
     </div>
   </section>
 
@@ -769,6 +833,8 @@
     </div>
   </section>
 
+
+
   <div class="fornecedor" style="text-align: center; padding: 30px 0 10px; font-weight: bold; color: red; font-size: 1.3em;">
     Fornecedor:<br>
     <img src="Gas/nacional.png" alt="Logo Nacional Gás" style="margin-top: 10px; max-height: 160px;">
@@ -777,9 +843,8 @@
   <footer>
     <p>
       Copyright © 2025 Piauí Gás —
-      <a href="privacidade.html" style="color: #333; text-decoration: underline;">Política de Privacidade</a>
-    </p>
-    <p>Dev: <a href="https://www.instagram.com/carlborges_3/" target="_blank" style="color: #333; text-decoration: none; font-weight: bold;">Carlos Henrique N. Borges</a></p>
+      <a href="privacidade.html" style="color: #333; text-decoration: underline;">Política de Privacidade
+ <p>Dev: <a href="https://www.instagram.com/carlborges_3/" target="_blank" style="color: #333; text-decoration: none; font-weight: bold;">Carlos Henrique N. Borges</a></p>
   </footer>
 
   <a class="whatsapp-fixo" href="https://wa.me/5518997146344" target="_blank" aria-label="WhatsApp">
