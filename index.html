@@ -57,7 +57,7 @@
       flex-direction: column;
       align-items: center;
     }
-  
+ 
     .logo strong {
       color: red;
       font-size: 1.6em;
@@ -306,6 +306,96 @@
       font-size: 1.1em;
     }
 
+    /* NOVOS ESTILOS: Galeria de Imagens */
+    .slideshow-container {
+      max-width: 700px;
+      position: relative;
+      margin: auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    .slide {
+      display: none;
+    }
+    .slide img {
+      vertical-align: middle;
+      border-radius: 15px;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+    @keyframes fade {
+      from {opacity: .4} 
+      to {opacity: 1}
+    }
+    
+    /* NOVOS ESTILOS: Formulário */
+    .form-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 25px;
+        background-color: #f9f9f9;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #333;
+    }
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1em;
+    }
+    .form-submit-btn {
+        width: 100%;
+        padding: 15px;
+        background-color: #25D366;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .form-submit-btn:hover {
+        background-color: #1ebe5b;
+    }
+
     /* Seção de localização com mapa e horário */
     .localizacao-container {
       display: flex;
@@ -473,6 +563,7 @@
 
       .telefone {
         font-size: 22px;
+         color: red;
       }
 
       .faixa-azul {
@@ -557,6 +648,7 @@
 
       .telefone {
         font-size: 20px;
+         color: red;
       }
 
       .faixa-azul {
@@ -593,17 +685,14 @@
       }
     }
   </style>
-  <!-- METATAGS PARA SEO E RANKING NO GOOGLE -->
-<meta name="description" content="Piauí Gás - Entrega de gás e água mineral em Teodoro Sampaio. Gás de cozinha da Nacional Gás com rapidez, preço justo e atendimento de qualidade.">
+  <meta name="description" content="Piauí Gás - Entrega de gás e água mineral em Teodoro Sampaio. Gás de cozinha da Nacional Gás com rapidez, preço justo e atendimento de qualidade.">
 <meta name="keywords" content="depósito de gás Teodoro Sampaio, gás Teodoro Sampaio, gás Piauí, gás Nacional Teodoro Sampaio, água mineral Teodoro, gás de cozinha barato, Piauí Gás, gás 13kg Teodoro, revenda de gás Teodoro, gás em Teodoro Sampaio">
 <meta name="author" content="Carlos Henrique N. Borges">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:title" content="Piauí Gás - Gás e Água Mineral em Teodoro Sampaio">
 <meta property="og:description" content="Pediu, Chegou! Gás de cozinha da Nacional Gás e água mineral com entrega rápida em Teodoro Sampaio.">
-<meta property="og:image" content="https://www.piauigas.com.br/botijao.png"> <!-- substitua pelo link da imagem -->
-<meta property="og:url" content="https://www.piauigas.com.br"> <!-- substitua pelo link do site -->
-<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.piauigas.com.br/botijao.png"> <meta property="og:url" content="https://www.piauigas.com.br"> <meta property="og:type" content="website">
 
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -618,10 +707,9 @@
     GÁS DE COZINHA APENAS R$ 95,00 RETIRANDO NA LOJA OU DELIVERY
   </div>
 
-  <!-- Cabeçalho -->
   <header class="menu">
     <div class="logo">
-      <a href="https://wa.me/5518997146344" target="_blank" aria-label="Contato WhatsApp">
+      <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank" aria-label="Contato WhatsApp">
        <img src="Gas/logo.png" alt="Logo Piauí Gás" >
       </a>
     </div>
@@ -636,10 +724,11 @@
       <a href="#home" class="active" onclick="scrollToSection('home')">Home</a>
       <a href="#sobre" onclick="scrollToSection('sobre')">Sobre Nós</a>
       <a href="#produtos" onclick="scrollToSection('produtos')">Produtos</a>
+      <a href="#deposito" onclick="scrollToSection('deposito')">Nosso Depósito</a>
       <a href="#fale-conosco" onclick="scrollToSection('fale-conosco')">Contato</a>
     </nav>
 
-    <a class="botao-gas" href="https://wa.me/5518997146344" target="_blank">
+    <a class="botao-gas" href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
       <img src="Gas/iconewhats.svg" alt="WhatsApp"> Peça seu gás
     </a>
   </header>
@@ -718,18 +807,16 @@
     });
   </script>
 
-  <!-- Seção principal -->
   <div class="container" id="home">
     <div class="info">
-      <div class="logo-text">PIAUÍ GÁS<sup>®</sup></div>
+      <div class="logo-text">PIAUÍ GÁS<sup></sup></div>
       <div class="slogan">PEDIU, <br> CHEGOU!</div>
       <div class="servicos">Gás e Água</div>
-      <a href="https://wa.me/5518997146344" class="zap-btn">Peça aqui seu gás</a>
-      <div class="telefone">Ou ligue<br>(18) 99714-6344</div>
+      <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." class="zap-btn">Peça aqui seu gás</a>
+  <div class="telefone"><span style="color: white;">Ou ligue<br>(18) 99714-6344</span></div>
     </div>
   </div>
 
-  <!-- Seções adicionais -->
   <section class="section">
     <h2>Por que comprar Nacional Gás?</h2>
     <p>O gás da Nacional Gás é sinônimo de qualidade, segurança e economia para o seu dia a dia. Com alto rendimento e inspeção rigorosa, garante um preparo mais eficiente dos alimentos e total tranquilidade para sua família. Presente em milhões de lares, a Nacional Gás é uma marca confiável, com tradição no mercado e compromisso com o consumidor, oferecendo um produto seguro, durável e com entrega rápida.</p>
@@ -741,7 +828,7 @@
 
   <div class="faixa-azul">
     <span>Pediu, Chegou! Peça aqui</span>
-    <a href="https://wa.me/5518997146344" target="_blank">
+    <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
       <img src="Gas/iconewhats.svg" alt="WhatsApp"> Peça seu Gás
     </a>
   </div>
@@ -750,30 +837,57 @@
     <h2>Nossos Produtos</h2>
     <div class="produtos-grid">
       <div class="produto-item">
-        <a href="https://wa.me/5518997146344" target="_blank">
+        <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
           <img src="Gas/botija.jpg" alt="Gás P13">
         </a>
         <p>Gás P13 - R$ 95,00</p>
       </div>
       <div class="produto-item">
-        <a href="https://wa.me/5518997146344" target="_blank">
+        <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
           <img src="Gas/galao.png" alt="Água Mineral">
         </a>
         <p>Água Mineral 20L - R$ 12,00</p>
       </div>
       <div class="produto-item">
-        <a href="https://wa.me/5518997146344" target="_blank">
+        <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
           <img src="Gas/carvão.png" alt="Carvão Vegetal">
         </a>
         <p>Carvão Vegetal - 3, 5 e 10kg</p>
       </div>
       <div class="produto-item">
-        <a href="https://wa.me/5518997146344" target="_blank">
+        <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
           <img src="Gas/registro.png" alt="Registro">
         </a>
         <p>Registro, Acessórios e Suportes para Galão</p>
       </div>
     </div>
+  </section>
+  
+
+  <section class="section" id="pedido-form">
+      <h2>Faça seu Pedido Online</h2>
+      <div class="form-container">
+          <form id="whatsappForm">
+              <div class="form-group">
+                  <label for="nome">Nome:</label>
+                  <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+              </div>
+              <div class="form-group">
+                  <label for="endereco">Endereço:</label>
+                  <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro" required>
+              </div>
+              <div class="form-group">
+                  <label for="pagamento">Forma de Pagamento:</label>
+                  <select id="pagamento" name="pagamento" required>
+                      <option value="" disabled selected>Selecione uma opção</option>
+                      <option value="Dinheiro">Dinheiro</option>
+                      <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
+                      <option value="Pix">Pix</option>
+                  </select>
+              </div>
+              <button type="submit" class="form-submit-btn">Enviar Pedido pelo WhatsApp</button>
+          </form>
+      </div>
   </section>
 
   <section class="section" id="contato" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; text-align: left;">
@@ -818,27 +932,25 @@
           </a>
         </li>
         <li style="display: flex; align-items: center; gap: 10px;">
-          <a href="https://wa.me/5518997146344" target="_blank">
+          <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
             <img src="Gas/iconewhats.svg" alt="WhatsApp" style="width: 24px; height: 24px;">
           </a>
-          <a href="https://wa.me/5518997146344" target="_blank" style="text-decoration: none; color: #333; font-weight: bold;">
+          <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank" style="text-decoration: none; color: #333; font-weight: bold;">
             (18) 99714-6344
           </a>
         </li>
       </ul><br>
       <strong>Siga-nos:</strong>
       <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
-        <a href="https://www.facebook.com/profile.php?id=61577932416936" target="_blank">
+        <a href="https://facebook.com" target="_blank">
           <img src="Gas/face.png" alt="Facebook" style="width: 28px; height: 28px;">
         </a>
-        <a href="https://www.instagram.com/piauigas_/" target="_blank">
+        <a href="https://instagram.com" target="_blank">
           <img src="Gas/insta.png" alt="Instagram" style="width: 28px; height: 28px;">
         </a>
       </div>
     </div>
   </section>
-
-
 
   <div class="fornecedor" style="text-align: center; padding: 30px 0 10px; font-weight: bold; color: red; font-size: 1.3em;">
     Fornecedor:<br>
@@ -849,12 +961,62 @@
     <p>
       Copyright © 2025 Piauí Gás —
       <a href="privacidade.html" style="color: #333; text-decoration: underline;">Política de Privacidade
- <p>Dev: <a href="https://www.instagram.com/carlborges_3/" target="_blank" style="color: #333; text-decoration: none; font-weight: bold;">Carlos Henrique N. Borges</a></p>
+   <p>Dev: <a href="https://www.instagram.com/carlborges_3/" target="_blank" style="color: #333; text-decoration: none; font-weight: bold;">Carlos Henrique N. Borges</a></p>
   </footer>
 
-  <a class="whatsapp-fixo" href="https://wa.me/5518997146344" target="_blank" aria-label="WhatsApp">
+  <a class="whatsapp-fixo" href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank" aria-label="WhatsApp">
     <img src="Gas/iconewhats.svg" alt="WhatsApp">
   </a>
+  
+  <script>
+    // Lógica da Galeria de Imagens
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("slide");
+      if (slides.length === 0) return; // Evita erro se a galeria não for encontrada
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slides[slideIndex-1].style.display = "block";  
+    }
+    
+    // Lógica do Formulário do WhatsApp
+    document.getElementById('whatsappForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const nome = document.getElementById('nome').value;
+        const endereco = document.getElementById('endereco').value;
+        const pagamento = document.getElementById('pagamento').value;
+        const telefone = '5518997146344'; // Número do WhatsApp sem '+' ou ' '
+
+        // Validação simples para garantir que os campos não estão vazios
+        if (!nome || !endereco || !pagamento) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+
+        // Monta a mensagem
+        const mensagem = `Olá, gostaria de fazer um pedido pelo site!\n\n*Nome:* ${nome}\n*Endereço:* ${endereco}\n*Forma de Pagamento:* ${pagamento}`;
+
+        // Codifica a mensagem para a URL
+        const mensagemCodificada = encodeURIComponent(mensagem);
+
+        // Cria o link do WhatsApp
+        const url = `https://wa.me/${telefone}?text=${mensagemCodificada}`;
+
+        // Abre o WhatsApp em uma nova aba
+        window.open(url, '_blank');
+    });
+  </script>
 
 </body>
 </html>
