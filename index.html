@@ -836,28 +836,28 @@
     <h2>Nossos Produtos</h2>
     <div class="produtos-grid">
       <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
+        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20G%C3%A1s%20P13" target="_blank">
           <img src="Gas/botija.jpg" alt="Gás P13">
         </a>
         <p>Gás P13 - R$ 95,00</p>
       </div>
       <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
-          <img src="Gas/galao.png" alt="Água Mineral">
+        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20G%C3%A1s%20P45" target="_blank">
+          <img src="imagens/p45.png" alt="Gás P45">
         </a>
-        <p>Água Mineral 20L - R$ 12,00</p>
+        <p>Gás P45</p>
       </div>
       <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
+        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20Carv%C3%A3o%20" target="_blank">
           <img src="Gas/carvão.png" alt="Carvão Vegetal">
         </a>
-        <p>Carvão Vegetal - 3, 5 e 10kg</p>
+        <p>Carvão Vegetal - 3 e 5kg</p>
       </div>
       <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
+        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20Registro%20ou%20Acess%C3%B3rios" target="_blank">
           <img src="Gas/registro.png" alt="Registro">
         </a>
-        <p>Registro, Acessórios e Suportes para Galão</p>
+        <p>Registro e Acessórios </p>
       </div>
     </div>
   </section>
@@ -869,11 +869,22 @@
           <form id="whatsappForm">
               <div class="form-group">
                   <label for="nome">Nome:</label>
-                  <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                  <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
               </div>
               <div class="form-group">
                   <label for="endereco">Endereço:</label>
                   <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro" required>
+              </div>
+              <div class="form-group">
+                  <label for="produto">Produto Desejado:</label>
+                  <select id="produto" name="produto" required>
+                      <option value="" disabled selected>Selecione um produto</option>
+                      <option value="Gás P13">Gás P13</option>
+                      <option value="Gás P45">Gás P45</option>
+                      <option value="Carvão Vegetal 3kg">Carvão Vegetal 3kg</option>
+                      <option value="Carvão Vegetal 5kg">Carvão Vegetal 5kg</option>
+                      <option value="Registro e Acessórios">Registro e Acessórios</option>
+                  </select>
               </div>
               <div class="form-group">
                   <label for="pagamento">Forma de Pagamento:</label>
@@ -914,7 +925,7 @@
   <section class="section" id="sobre" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; text-align: left;">
     <div style="flex: 1; min-width: 300px;">
       <h2>Sobre Nós</h2>
-      <p>Somos revendedores de Gás GLP e Água Mineral, atuando com responsabilidade, agilidade e compromisso com a sua segurança. Representamos a <strong>Nacional Gás</strong>, uma das marcas mais confiáveis do país, com mais de <strong>70 anos de atuação</strong> no mercado, levando energia segura para milhões de lares brasileiros.</p>
+      <p>Somos revendedores de Gás GLP, atuando com responsabilidade, agilidade e compromisso com a sua segurança. Representamos a <strong>Nacional Gás</strong>, uma das marcas mais confiáveis do país, com mais de <strong>70 anos de atuação</strong> no mercado, levando energia segura para milhões de lares brasileiros.</p>
       <p style="margin-top: 15px;">A <strong>Piauí Gás</strong> tem mais de <strong>30 anos de experiência</strong> no setor, e estamos legalmente estabelecidos com o CNPJ <strong>51.508.998/0001-70</strong>. Nossa missão é garantir praticidade, confiança e atendimento de qualidade em cada entrega.</p>
     </div>
     <div style="flex: 1; min-width: 300px;" id="fale-conosco">
@@ -959,7 +970,8 @@
   <footer>
     <p>
       Copyright © 2025 Piauí Gás —
-      <a href="privacidade.html" style="color: #333; text-decoration: underline;">Política de Privacidade
+      <a href="privacidade.html" style="color: #333; text-decoration: underline;">Política de Privacidade</a>
+    </p>
    <p>Dev: <a href="https://www.instagram.com/carlborges_3/" target="_blank" style="color: #333; text-decoration: none; font-weight: bold;">Carlos Henrique N. Borges</a></p>
   </footer>
 
@@ -994,17 +1006,18 @@
 
         const nome = document.getElementById('nome').value;
         const endereco = document.getElementById('endereco').value;
+        const produto = document.getElementById('produto').value;
         const pagamento = document.getElementById('pagamento').value;
         const telefone = '5518997146344'; // Número do WhatsApp sem '+' ou ' '
 
         // Validação simples para garantir que os campos não estão vazios
-        if (!nome || !endereco || !pagamento) {
+        if (!nome || !endereco || !produto || !pagamento) {
             alert('Por favor, preencha todos os campos.');
             return;
         }
 
         // Monta a mensagem
-        const mensagem = `Olá, gostaria de fazer um pedido pelo site!\n\n*Nome:* ${nome}\n*Endereço:* ${endereco}\n*Forma de Pagamento:* ${pagamento}`;
+        const mensagem = `Olá, gostaria de fazer um pedido pelo site!\n\n*Nome:* ${nome}\n*Endereço:* ${endereco}\n*Produto:* ${produto}\n*Forma de Pagamento:* ${pagamento}`;
 
         // Codifica a mensagem para a URL
         const mensagemCodificada = encodeURIComponent(mensagem);
