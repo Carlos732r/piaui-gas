@@ -301,45 +301,57 @@
       transform: rotate(-45deg) translate(7px, -7px);
     }
 
-    /* Menu Mobile */
-    .nav-mobile {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 85%;
-      max-width: 400px;
-      height: 100vh;
-      background: linear-gradient(180deg, var(--branco) 0%, var(--cinza-claro) 100%);
-      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
-      padding: 100px 30px 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 999;
-    }
+    /* Menu Mobile - Modelo Teodoro */
+    @media (max-width: 992px) {
+      .nav-desktop {
+        display: none;
+      }
 
-    .nav-mobile.ativo {
-      right: 0;
-    }
+      .btn-pedir-desktop {
+        display: none;
+      }
 
-    .nav-mobile a {
-      color: var(--azul-principal);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.2rem;
-      padding: 15px 20px;
-      border-radius: 12px;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+      .menu-toggle {
+        display: flex;
+      }
 
-    .nav-mobile a:hover {
-      background: var(--azul-principal);
-      color: white;
-      transform: translateX(5px);
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        gap: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0 0 10px 10px;
+        margin-right: 0;
+      }
+
+      .nav-links.ativo {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.1em;
+        padding: 15px 20px;
+        color: var(--azul-principal);
+        border-bottom: 1px solid #f0f0f0;
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        background-color: #f8f8f8;
+        color: var(--vermelho-principal);
+      }
+
+      .nav-links a:last-child {
+        border-bottom: none;
+      }
     }
     /* ========== HERO SECTION COM CARDS FLUTUANTES ========== */
     .hero-section {
@@ -1613,18 +1625,6 @@
       filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
     }
 
-      .nav-desktop {
-        display: none;
-      }
-
-      .btn-pedir-desktop {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
       /* Hero Mobile */
       .hero-section {
         margin-top: 110px;
@@ -2008,29 +2008,6 @@
     </div>
   </div>
 
-  <nav class="nav-mobile" id="navMobile">
-    <a href="#home" onclick="fecharMenuMobile()">
-      <i class="fas fa-home"></i> Início
-    </a>
-    <a href="index.html" onclick="fecharMenuMobile()">
-      <i class="fas fa-globe"></i> Central
-    </a>
-    <a href="#produtos" onclick="fecharMenuMobile()">
-      <i class="fas fa-fire"></i> Produtos
-    </a>
-    <a href="#sobre" onclick="fecharMenuMobile()">
-      <i class="fas fa-info-circle"></i> Sobre Nós
-    </a>
-    <a href="#pedido" onclick="fecharMenuMobile()">
-      <i class="fas fa-clipboard-list"></i> Fazer Pedido
-    </a>
-    <a href="#contato" onclick="fecharMenuMobile()">
-      <i class="fas fa-phone"></i> Contato
-    </a>
-    <a href="https://wa.me/5518997311964?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" style="background: var(--verde-whats); color: white; margin-top: 20px;">
-      <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
-  </nav>
   <section class="hero-section" id="home">
     <div class="hero-container">
       
@@ -2554,27 +2531,30 @@
   <script>
     // ========== MENU MOBILE ==========
     const menuToggle = document.getElementById('menuToggle');
-    const navMobile = document.getElementById('navMobile');
+    const navLinks = document.getElementById('navLinks');
     const header = document.getElementById('header');
 
     // Toggle Menu Mobile
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('ativo');
-      navMobile.classList.toggle('ativo');
-      document.body.style.overflow = navMobile.classList.contains('ativo') ? 'hidden' : 'auto';
+      navLinks.classList.toggle('ativo');
     });
 
     // Fechar Menu Mobile
-    function fecharMenuMobile() {
+    function fecharMenu() {
       menuToggle.classList.remove('ativo');
-      navMobile.classList.remove('ativo');
-      document.body.style.overflow = 'auto';
+      navLinks.classList.remove('ativo');
     }
+
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', fecharMenu);
+    });
 
     // Fechar menu ao clicar fora
     document.addEventListener('click', (e) => {
-      if (!navMobile.contains(e.target) && !menuToggle.contains(e.target)) {
-        fecharMenuMobile();
+      if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        fecharMenu();
       }
     });
 
