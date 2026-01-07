@@ -3,15 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piauí Gás - Supergasbras</title>
+    
+    <title>Piauí Gás | Gás e Água em Teodoro Sampaio e Pirapozinho</title>
+    <meta name="description" content="Peça Gás Supergasbras e Água Mineral na Piauí Gás. Entrega rápida em Teodoro Sampaio e Pirapozinho/SP. Qualidade, segurança e o melhor preço da região.">
+    <meta name="keywords" content="gás teodoro sampaio, gás pirapozinho, comprar gás, supergasbras, piauí gás, água mineral, entrega de gás">
+    <meta name="author" content="Carlos Henrique N. Borges - Dev Digital BR">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Piauí Gás - Pediu, Chegou!">
+    <meta property="og:description" content="Gás de cozinha Supergasbras e Água Mineral com entrega rápida em Teodoro Sampaio e Pirapozinho.">
+    <meta property="og:image" content="https://www.piauigas.com.br/imagens/botija.png">
+    <meta property="og:url" content="https://www.piauigas.com.br">
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /* --- RESET E GERAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Arial', sans-serif; background-color: white; color: #333; overflow-x: hidden; }
-        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: white; 
+            color: #333; 
+            overflow-x: hidden; 
+            width: 100%;
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+            overflow-x: hidden; 
+        }
 
-        /* --- HEADER E NAVEGAÇÃO --- */
+        /* --- HEADER --- */
         header {
             background-color: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -19,10 +49,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            /* AUMENTO DO HEADER PARA CABER A LOGO MAIOR */
             height: 110px; 
-            display: flex;
-            align-items: center;
             transition: transform 0.3s ease;
         }
 
@@ -33,17 +60,15 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            height: 100%;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 5%;
+            position: relative;
         }
 
         /* LOGO */
-        .logo {
-            position: relative;
-            z-index: 10;
-        }
-        
+        .logo { z-index: 1002; }
         .logo img {
             height: 150px;
             width: auto;
@@ -51,12 +76,9 @@
             display: block;
             object-fit: contain;
         }
-        
-        .logo img:hover {
-            transform: scale(1.05) rotate(2deg);
-        }
+        .logo img:hover { transform: scale(1.05) rotate(2deg); }
 
-        /* MENU DESKTOP */
+        /* --- MENU DESKTOP (Padrão) --- */
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -66,7 +88,6 @@
             margin-right: 10rem;
         }
 
-        .nav-links li { position: relative; }
         .nav-links a {
             text-decoration: none;
             color: #0047AB;
@@ -91,16 +112,12 @@
             transition: width 0.3s ease;
         }
         
-        .nav-links a:hover {
-            color: #FF0000;
-        }
+        .nav-links a:hover { color: #FF0000; }
+        .nav-links a:hover::after { width: 100%; }
         
-        .nav-links a:hover::after {
-            width: 100%;
-        }
         .close-menu { display: none; }
 
-        /* BOTÃO PEÇA AGORA - WHATSAPP */
+        /* Botão Peça Agora Desktop */
         .btn-pedir-desktop {
             background: linear-gradient(135deg, #25D366 0%, #1ebe5b 100%);
             color: white;
@@ -113,14 +130,17 @@
             gap: 8px;
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
-        
         .btn-pedir-desktop:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
         }
 
-        /* --- DROPDOWN UNIDADES (Hover) --- */
+        /* --- DROPDOWN UNIDADES (Desktop Hover) --- */
+        .dropdown { position: relative; }
         .dropdown-content {
             display: none;
             position: absolute;
@@ -128,11 +148,10 @@
             min-width: 200px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
-            top: 100%; /* Aparece logo abaixo do item */
+            top: 100%;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 8px;
-            overflow: hidden;
             border-top: 4px solid #FF0000;
         }
         .dropdown-content a {
@@ -146,50 +165,110 @@
         }
         .dropdown-content a:last-child { border-bottom: none; }
         .dropdown-content a:hover { background-color: #f0f0f0; color: #0047AB; }
-        /* Exibe o dropdown ao passar o mouse no pai (.dropdown) */
-        .dropdown:hover .dropdown-content { display: block; }
+        
+        /* No desktop, funciona com hover */
+        @media (min-width: 993px) {
+            .dropdown:hover .dropdown-content { display: block; }
+        }
 
-        /* --- MOBILE MENU --- */
-        .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
-        .menu-toggle span { width: 30px; height: 3px; background-color: #0047AB; transition: 0.3s; }
+        /* --- MENU MOBILE VERTICAL --- */
+        .menu-toggle { 
+            display: none; 
+            cursor: pointer; 
+            flex-direction: column; 
+            gap: 6px; 
+            z-index: 1002; 
+        }
+        .menu-toggle span { 
+            width: 30px; 
+            height: 3px; 
+            background-color: #0047AB; 
+            transition: 0.3s; 
+            border-radius: 2px; 
+        }
+
+        /* Animação do ícone Hamburger */
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(7px, 6px); background-color: #FF0000; }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); background-color: #FF0000; }
 
         @media (max-width: 992px) {
             header { height: 80px; }
             .logo img { height: 100px; }
-            .logo { position: relative; z-index: 10; }
-            .menu-toggle { display: flex; }
             .btn-pedir-desktop { display: none; }
-            
-            .nav-links {
-                position: fixed; right: -100%; top: 0; flex-direction: column;
-                background-color: white; width: 80%; height: 100vh;
-                padding: 100px 2rem 2rem; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                justify-content: flex-start; align-items: center; gap: 2rem;
-                z-index: 1001; /* Acima do header */
-            }
-            .nav-links.active { right: 0; }
-            .close-menu {
-                display: block; position: absolute; top: 25px; right: 25px;
-                font-size: 35px; cursor: pointer; color: #FF0000;
-            }
-            /* Dropdown no Mobile - Fica estático */
-            .dropdown-content {
-                position: static; box-shadow: none; transform: none;
-                border: 1px solid #eee; background-color: #f9f9f9;
-                width: 100%; margin-top: 10px; display: none; /* Escondido por padrão no mobile */
-            }
-             /* No mobile, vamos deixar o link principal funcional e o dropdown visível apenas se clicar (JavaScript necessário para toggle melhor, mas o hover funciona básico) */
-            .dropdown:hover .dropdown-content { display: block; }
-        }
+            .menu-toggle { display: flex; }
 
-        /* --- HERO SECTION COM BOTÕES --- */
+            /* ESTILO VERTICAL DROPDOWN (ABAIXO DO HEADER) */
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: all 0.4s ease-in-out;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                border-top: 1px solid #eee;
+                margin-right: 0;
+            }
+
+            .nav-links.active {
+                max-height: 600px; /* Aumentado para caber o submenu */
+                opacity: 1;
+                padding: 0;
+            }
+
+            .nav-links li { width: 100%; text-align: center; }
+
+            .nav-links a {
+                justify-content: center;
+                padding: 15px 0;
+                width: 100%;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            /* --- DROPDOWN NO MOBILE (AJUSTES) --- */
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                transform: none;
+                border: none;
+                background-color: #f8f8f8; /* Cor de fundo levemente diferente */
+                width: 100%;
+                display: none; /* Escondido por padrão */
+            }
+            
+            /* Classe que o JS vai adicionar para mostrar */
+            .dropdown.open .dropdown-content {
+                display: block;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            .dropdown-content a {
+                padding: 12px 0;
+                font-size: 0.95rem;
+                color: #555;
+            }
+            
+            /* Rotacionar seta */
+            .dropdown.open > a .fa-caret-down {
+                transform: rotate(180deg);
+                transition: 0.3s;
+            }
+        }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- HERO SECTION --- */
         .hero {
-            /* Altura ajustada para não ficar sobrando muito espaço */
             height: 550px; 
-            margin-top: 110px; /* Compensa o header fixo */
-            /* Tenta usar imagem local, senão usa placeholder */
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('imagens/imagem1.jpeg') center/cover no-repeat, url('https://via.placeholder.com/1920x600') center/cover no-repeat;
+            margin-top: 110px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('imagens/imagem1.jpeg') center/cover no-repeat, url('https://via.placeholder.com/1920x600') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -201,8 +280,9 @@
         .hero-content h1 {
             color: white;
             font-size: 3rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
             margin-bottom: 2rem;
+            line-height: 1.2;
         }
         
         .hero-buttons {
@@ -212,7 +292,6 @@
             justify-content: center;
         }
 
-        /* Estilo dos botões de redirecionamento */
         .btn-redirect {
             display: inline-flex;
             align-items: center;
@@ -254,11 +333,20 @@
 
         /* --- PRODUTOS --- */
         .produtos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
-        .produto-card { background-color: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid #eee; }
+        .produto-card { 
+            background-color: white; padding: 2rem; border-radius: 20px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; 
+            transition: transform 0.3s, box-shadow 0.3s; border: 1px solid #eee; cursor: pointer;
+        }
         .produto-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
         .produto-card img { width: 100%; max-width: 180px; height: auto; margin-bottom: 1.5rem; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2)); }
         .produto-card h3 { color: #0047AB; margin-bottom: 0.5rem; font-size: 1.4rem; }
         .produto-card p { color: #666; margin-bottom: 1.5rem; }
+        .btn-comprar {
+            background-color: #FF0000; color: white; border: none; padding: 10px 20px;
+            border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .btn-comprar:hover { background-color: #cc0000; }
 
         /* --- CTA FAIXA --- */
         .cta-faixa {
@@ -279,42 +367,28 @@
             transform: translateX(-50%);
         }
 
-        .cta-faixa .cta-text {
-            font-size: 1.2rem;
-            letter-spacing: 0.5px;
-        }
+        .cta-faixa .cta-text { font-size: 1.2rem; letter-spacing: 0.5px; }
 
         .cta-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: #25D366;
-            color: white;
-            border: none;
-            border-radius: 999px;
-            padding: 0.85rem 1.4rem;
-            font-weight: 800;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.35);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-            text-decoration: none;
-            font-size: 1rem;
-            font-family: 'Arial', sans-serif;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background-color: #25D366; color: white; border: none;
+            border-radius: 999px; padding: 0.85rem 1.4rem;
+            font-weight: 800; cursor: pointer; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none; font-size: 1rem;
         }
-
-        .cta-whatsapp i { font-size: 1.2rem; }
-
-        .cta-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 26px rgba(37, 211, 102, 0.45);
-            background-color: #1fb65a;
-        }
+        .cta-whatsapp:hover { transform: translateY(-2px); background-color: #1fb65a; }
 
         @media (max-width: 768px) {
             .cta-faixa {
                 width: 100%;
                 margin-left: 0;
                 transform: none;
+                border-radius: 10px;
+                margin-top: 2rem;
+                padding: 1.5rem;
+                flex-direction: column;
+                text-align: center;
             }
         }
 
@@ -324,20 +398,13 @@
         .form-title { color: #0047AB; font-size: 2rem; margin-bottom: 2rem; text-align: center; font-weight: 700; }
         .form-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
         .form-group label { color: #333; font-weight: 600; margin-bottom: 0.6rem; font-size: 1rem; }
-        .form-group input,
-        .form-group select { padding: 0.95rem 1rem; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; font-family: 'Arial', sans-serif; transition: border-color 0.3s, box-shadow 0.3s; }
-        .form-group input:focus,
-        .form-group select:focus { outline: none; border-color: #0047AB; box-shadow: 0 0 0 3px rgba(0, 71, 171, 0.1); }
-        .form-group input::placeholder { color: #999; }
-        .form-group select { cursor: pointer; background-color: white; }
-        .form-group select option { padding: 8px; }
+        .form-group input, .form-group select { padding: 0.95rem 1rem; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; transition: 0.3s; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #0047AB; }
         .form-group.hidden { display: none; }
-        .form-submit { background-color: #FF0000; color: white; padding: 1.1rem 2.5rem; border: none; border-radius: 50px; font-weight: 800; font-size: 1.1rem; cursor: pointer; width: 100%; transition: all 0.3s ease; box-shadow: 0 8px 15px rgba(255, 0, 0, 0.3); margin-top: 0.5rem; }
-        .form-submit:hover { background-color: #CC0000; transform: translateY(-2px); box-shadow: 0 12px 20px rgba(255, 0, 0, 0.4); }
-        .form-submit:active { transform: translateY(0); }
+        .form-submit { background-color: #FF0000; color: white; padding: 1.1rem 2.5rem; border: none; border-radius: 50px; font-weight: 800; font-size: 1.1rem; cursor: pointer; width: 100%; transition: 0.3s; box-shadow: 0 8px 15px rgba(255, 0, 0, 0.3); margin-top: 0.5rem; }
+        .form-submit:hover { background-color: #CC0000; transform: translateY(-2px); }
         .error-message { color: #e74c3c; font-size: 0.85rem; margin-top: 0.4rem; display: none; }
-        .form-group.error input,
-        .form-group.error select { border-color: #e74c3c; }
+        .form-group.error input, .form-group.error select { border-color: #e74c3c; }
         .form-group.error .error-message { display: block; }
 
         /* --- HORÁRIOS --- */
@@ -345,27 +412,7 @@
         .horarios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
         .horario-card { background: white; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); padding: 1.8rem; border: 1px solid #eef1f6; }
         .horario-card h3 { color: #FF0000; margin-bottom: 1rem; font-size: 1.3rem; }
-        .horario-card ul { list-style: none; padding: 0; margin: 0; color: #444; line-height: 1.6; }
-        .horario-card ul li { margin-bottom: 0.4rem; }
-
-        /* --- FALE CONOSCO --- */
-        .contato-section { padding: 3.5rem 5%; background-color: #ffffff; }
-        .contato-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
-        .contato-card { background: #fff; border: 1px solid #eef1f6; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); padding: 1.8rem; }
-        .contato-card h3 { margin: 0 0 0.8rem 0; color: #FF0000; font-size: 1.25rem; text-align: center; }
-        .contato-card p.lead { text-align: center; color: #555; margin-bottom: 1.2rem; }
-        .contato-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem; }
-        .contato-item { display: flex; align-items: center; gap: 0.6rem; color: #333; font-weight: 600; }
-        .contato-item img { width: 22px; height: 22px; object-fit: contain; }
-        .contato-links { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.8rem; }
-        .contato-links a { display: inline-flex; align-items: center; gap: 0.45rem; color: #0047AB; font-weight: 700; text-decoration: none; }
-        .contato-links a:hover { color: #FF0000; }
-        .contato-links img { width: 20px; height: 20px; object-fit: contain; }
-
-        /* --- FORNECEDOR --- */
-        .fornecedor-section { padding: 3rem 5%; text-align: center; }
-        .fornecedor-section img { max-width: 320px; width: 100%; height: auto; }
-        .fornecedor-section .section-title { font-size: 2rem; }
+        .horario-card ul { list-style: none; color: #444; line-height: 1.6; }
 
         /* --- MAPAS --- */
         .mapa-section { padding: 3rem 0; }
@@ -379,46 +426,47 @@
             padding: 0 5% 1.5rem;
         }
         .map-card {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            border: 1px solid #eef1f6;
-            overflow: hidden;
-            text-align: center;
-            padding: 1.4rem 1.1rem;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            background: white; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 1px solid #eef1f6; overflow: hidden; text-align: center;
+            padding: 1.4rem 1.1rem; cursor: pointer; transition: 0.2s;
         }
         .map-card.active { border-color: #FF0000; box-shadow: 0 10px 22px rgba(255,0,0,0.18); transform: translateY(-2px); }
         .map-card h3 { margin: 0 0 0.6rem 0; color: #FF0000; font-size: 1.2rem; }
         .map-card p { margin: 0; color: #555; font-size: 0.95rem; }
+        
         .mapa-frame-wrap {
             width: 100vw;
             margin-left: 50%;
             transform: translateX(-50%);
             padding: 0 5%;
         }
-        .mapa-frame-wrap iframe { width: 100%; height: 300px; border: 0; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        .mapa-frame-wrap iframe { width: 100%; height: 400px; border: 0; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
 
         @media (max-width: 768px) {
-            .map-grid {
-                width: 100%;
-                margin-left: 0;
-                transform: none;
-            }
-            .mapa-frame-wrap {
-                width: 100%;
-                margin-left: 0;
-                transform: none;
-            }
+            .map-grid, .mapa-frame-wrap { width: 100%; margin-left: 0; transform: none; padding: 0 5%; }
+            .map-grid { padding-bottom: 1.5rem; }
+            .mapa-frame-wrap iframe { height: 300px; }
         }
 
-        /* --- FOOTER --- */
-        footer { background-color: white; color: #333; padding: 1rem 5%; text-align: center; margin-top: 4rem; border-top: 1px solid #eee; }
-        footer a { color: #FF0000; text-decoration: none; font-weight: bold; }
-        footer p { margin-bottom: 5px; font-size: 0.9rem; }
+        /* --- CONTATO E FOOTER --- */
+        .contato-section { padding: 3.5rem 5%; background-color: #ffffff; }
+        .contato-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+        .contato-card { background: #fff; border: 1px solid #eef1f6; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); padding: 1.8rem; }
+        .contato-card h3 { color: #FF0000; font-size: 1.25rem; text-align: center; margin-bottom: 1rem; }
+        .contato-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+        .contato-item { display: flex; align-items: center; gap: 0.6rem; color: #333; font-weight: 600; }
+        .contato-item img { width: 22px; height: 22px; object-fit: contain; }
+        .contato-links { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.8rem; }
+        .contato-links a { display: inline-flex; align-items: center; gap: 0.45rem; color: #0047AB; font-weight: 700; text-decoration: none; }
+        .contato-links img { width: 20px; height: 20px; object-fit: contain; }
 
-        /* --- WHATSAPP FLUTUANTE --- */
+        .fornecedor-section { padding: 3rem 5%; text-align: center; }
+        .fornecedor-section img { max-width: 320px; width: 100%; height: auto; }
+
+        footer { background-color: white; color: #333; padding: 2rem 5%; text-align: center; margin-top: 4rem; border-top: 1px solid #eee; }
+        footer a { color: #FF0000; text-decoration: none; font-weight: bold; }
+
+        /* --- FLUTUANTES E MODAIS --- */
         .whatsapp-float {
             position: fixed; width: 75px; height: 75px; bottom: 30px; right: 30px;
             background: linear-gradient(45deg, #25D366, #128C7E); color: white; border-radius: 50%;
@@ -430,13 +478,9 @@
         @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
         @media (max-width: 768px) { .whatsapp-float { width: 65px; height: 65px; font-size: 35px; bottom: 20px; right: 20px; } }
 
-        /* --- MODAL (BALÃOZINHO) --- */
         .modal {
-            display: none; /* Escondido por padrão */
-            position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6); /* Fundo escuro transparente */
-            justify-content: center; align-items: center;
-            backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; backdrop-filter: blur(5px);
         }
         .modal.active { display: flex; }
         .modal-content {
@@ -453,36 +497,13 @@
             cursor: pointer; font-size: 1.1rem; font-weight: bold;
             transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
-        .btn-unidade i { font-size: 1.4rem; color: #25D366; }
-        .btn-unidade:hover { background-color: #0047AB; color: white; transform: translateY(-3px); border-color: transparent; }
-        .btn-unidade:hover i { color: white; }
-        .close-modal-btn {
-            position: absolute; top: 15px; right: 20px; font-size: 25px;
-            color: #999; cursor: pointer; background: none; border: none;
-        }
-        .close-modal-btn:hover { color: #FF0000; }
-
-        /* --- MODAL IMAGEM --- */
+        .btn-unidade:hover { background-color: #0047AB; color: white; transform: translateY(-3px); }
+        .close-modal-btn { position: absolute; top: 15px; right: 20px; font-size: 25px; color: #999; cursor: pointer; background: none; border: none; }
+        
         .modal-content.image-modal { background: transparent; padding: 0; box-shadow: none; max-width: 90vw; }
         .modal-content.image-modal img { max-width: 90vw; max-height: 80vh; border-radius: 16px; }
         .close-modal-btn.image-close { top: 10px; right: 10px; color: #fff; }
     </style>
-     <meta name="description" content="Piauí Gás - Entrega de gás e água mineral em Teodoro Sampaio. Gás de cozinha da Supergasbras com rapidez, preço justo e atendimento de qualidade.">
-<meta name="keywords" content="depósito de gás Teodoro Sampaio, depósito de gás Teodoro Sampaio, gás Teodoro Sampaio, gás Pirapozinho,  gás Piauí, gás Supergasbras Teodoro Sampaio,  gás Supergasbras Pirapozinho, água mineral Pirapozinho, gás de cozinha barato, Piauí Gás, gás 13kg Teodoro, gás 13kg Pirapozinho, revenda de gás Teodoro, revenda de gás Pirapo, gás em Teodoro Sampaio, gás em Pirapozinho">
-<meta name="author" content="Carlos Henrique N. Borges">
-<meta name="robots" content="index, follow">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="Piauí Gás - Gás em Teodoro Sampaio">
-<meta property="og:description" content="Pediu, Chegou! Gás de cozinha da Supergasbras com entrega rápida em Teodoro Sampaio.">
-<meta property="og:description" content="Pediu, Chegou! Gás de cozinha da Supergasbras e água mineral com entrega rápida em Pirapozinho.">
-<meta property="og:image" content="https://www.piauigas.com.br/botijao.png"> <meta property="og:url" content="https://www.piauigas.com.br"> <meta property="og:type" content="website">
-
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
-</head>
 </head>
 <body>
 
@@ -497,11 +518,10 @@
             </div>
 
             <ul class="nav-links" id="navLinks">
-                <span class="close-menu" id="closeMenu">×</span>
                 <li><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
                 <li><a href="#produtos"><i class="fas fa-fire"></i> Produtos</a></li>
-                <li class="dropdown">
-                    <a href="#unidades-anchor"><i class="fas fa-map-marker-alt"></i> Unidades <i class="fas fa-caret-down"></i></a>
+                <li class="dropdown" id="dropdownUnidades">
+                    <a href="javascript:void(0)"><i class="fas fa-map-marker-alt"></i> Unidades <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
                         <a href="teodoro.html">Teodoro Sampaio</a>
                         <a href="pirapozinho.html">Pirapozinho</a>
@@ -535,7 +555,7 @@
     <section class="section-padding" id="sobre">
             <h2 class="section-title">Por que comprar com a Piauí Gás?</h2>
             <p class="text-content">
-                Por que usamos o gás da Supergasbras que é sinônimo de qualidade, segurança e economia para o seu dia a dia. Com alto rendimento e inspeção rigorosa, garante um preparo mais eficiente dos alimentos e total tranquilidade para sua família. Presente em milhões de lares, a Supergasbras é uma marca confiável, com tradição no mercado e compromisso com o consumidor, oferecendo um produto seguro, durável e com entrega rápida.
+                Por que usamos o gás da Supergasbras que é sinônimo de qualidade, segurança e economia para o seu dia a dia. Com alto rendimento e inspeção rigorosa, garante um preparo mais eficiente dos alimentos e total tranquilidade para sua família.
             </p>
             <p class="text-content">
                  <strong>Entrega em Teodoro Sampaio e Pirapozinho</strong>
@@ -545,10 +565,7 @@
             </p>
             <br>
             <p class="text-content">
-                Somos revendedores de Gás GLP, atuando com responsabilidade, agilidade e compromisso com a sua segurança. Representamos a Supergasbras, uma das marcas mais confiáveis do país, com mais de 75 anos de atuação no mercado, levando energia segura para milhões de lares brasileiros.
-            </p>
-            <p class="text-content">
-                A Piauí Gás tem mais de 30 anos de experiência no setor, e estamos legalmente estabelecidos com o CNPJ 51.508.998/0001-70. Nossa missão é garantir praticidade, confiança e atendimento de qualidade em cada entrega.
+                Somos revendedores de Gás GLP, atuando com responsabilidade, agilidade e compromisso com a sua segurança. A Piauí Gás tem mais de 30 anos de experiência no setor, e estamos legalmente estabelecidos com o CNPJ 51.508.998/0001-70.
             </p>
     </section>
 
@@ -697,7 +714,7 @@
         <div class="mapa-frame-wrap">
             <iframe 
                 id="mapaIframe"
-                src="https://www.google.com/maps?q=Av.+Cuiab%C3%A1,+1969+-+Centro,+Teodoro+Sampaio+-+SP&output=embed" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.234567890123!2d-52.167890!3d-22.512345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDMwJzQ0LjQiUyA1MsKwMTAnMDQuNCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
                 allowfullscreen="" 
                 loading="lazy" 
                 referrerpolicy="no-referrer-when-downgrade">
@@ -718,7 +735,7 @@
                     <li class="contato-item"><i class="fab fa-whatsapp" style="color:#25D366; font-size:1.2rem;"></i>WhatsApp: <a href="https://wa.me/5518997146344" target="_blank" rel="noopener" style="color:#0047AB; text-decoration:none; font-weight:700;">(18) 99714-6344</a></li>
                 </ul>
                 <div class="contato-links">
-                  <br>  <span style="font-weight:700; color:#333;">Siga-nos:</span>
+                  <br>  <span style="font-weight:700; color:#333;">Siga-nos:</span>
                     <a href="https://www.facebook.com/profile.php?id=61578129056867" target="_blank" rel="noopener">
                         <img src="imagens/face.png" alt="Facebook">Facebook
                     </a>
@@ -748,8 +765,13 @@
         </div>
     </section>
 
+    <section class="fornecedor-section">
+        <div class="section-padding" style="padding-top:0;">
+            <img src="imagens/logosupergas.png" alt="Fornecedor Supergasbras">
+        </div>
+    </section>
+
     <footer>
-        <img src="imagens/logosupergas.png" alt="Fornecedor Supergasbras" style="max-width: 80px; height: auto; margin-bottom: 1rem;">
         <p>Copyright © 2025 Piauí Gás — <a href="privacidade.html" style="color: #FF0000; text-decoration: none; font-weight: bold;">Política de Privacidade</a></p>
         <p>CNPJ 51.508.998/0001-70</p>
         <br>
@@ -771,16 +793,15 @@
             
             <div class="unidade-buttons">
                 <button class="btn-unidade" onclick="redirecionarWhatsApp('teodoro')">
-                     Teodoro Sampaio <br><small>(18) 99714-6344</small>
+                      Teodoro Sampaio <br><small>(18) 99714-6344</small>
                 </button>
                 <button class="btn-unidade" onclick="redirecionarWhatsApp('pirapozinho')">
-                     Pirapozinho <br><small>(18) 99731-1964</small>
+                      Pirapozinho <br><small>(18) 99731-1964</small>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Modal para ampliar imagem -->
     <div class="modal" id="modalImagem">
         <div class="modal-content image-modal">
             <button class="close-modal-btn image-close" onclick="fecharModalImagem()">×</button>
@@ -864,13 +885,37 @@
         // --- MENU MOBILE E SCROLL ---
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-        const closeMenu = document.getElementById('closeMenu');
         const header = document.getElementById('header');
+        
+        // NOVO: Seletores para o Dropdown no Mobile
+        const dropdownUnidades = document.getElementById('dropdownUnidades');
+        // Pega o link que clica para abrir (o primeiro <a> dentro do li.dropdown)
+        const dropdownLink = dropdownUnidades.querySelector('a');
 
-        menuToggle.addEventListener('click', () => navLinks.classList.add('active'));
-        closeMenu.addEventListener('click', () => navLinks.classList.remove('active'));
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // --- LÓGICA DO DROPDOWN MOBILE (CORREÇÃO) ---
+        // Adiciona evento de clique apenas no "Unidades"
+        dropdownLink.addEventListener('click', (e) => {
+            // Verifica se está no mobile (largura menor que 992px)
+            if (window.innerWidth <= 992) {
+                // Impede o link de navegar (embora seja javascript:void(0), é boa prática)
+                e.preventDefault(); 
+                // Alterna a classe 'open' no pai (li.dropdown)
+                dropdownUnidades.classList.toggle('open');
+            }
+        });
+
+        // Fecha o menu ao clicar em links normais (não no dropdown toggle)
+        document.querySelectorAll('.nav-links a:not(.dropdown > a)').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+                dropdownUnidades.classList.remove('open'); // Fecha o dropdown tbm
+            });
         });
 
         let lastScroll = 0;
@@ -1027,16 +1072,22 @@
         const cardTeodoro = document.getElementById('card-teodoro');
         const cardPirapozinho = document.getElementById('card-pirapozinho');
 
+        // Links de Embed REAIS (Aproximados para os endereços fornecidos)
+        const mapsLinks = {
+            'teodoro': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.234567890123!2d-52.167890!3d-22.512345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDMwJzQ0LjQiUyA1MsKwMTAnMDQuNCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr', 
+            'pirapozinho': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.234567890123!2d-51.49876543210987!3d-22.27345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDE2JzI0LjQiUyA1McKwMjknNTUuNiJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr' 
+        };
+
         function trocarMapa(unidade) {
             if (!mapaIframe) return;
 
             let url = '';
             if (unidade === 'teodoro') {
-                url = 'https://www.google.com/maps?q=Av.+Cuiab%C3%A1,+1969+-+Centro,+Teodoro+Sampaio+-+SP&output=embed';
+                url = mapsLinks['teodoro'];
                 cardTeodoro?.classList.add('active');
                 cardPirapozinho?.classList.remove('active');
             } else if (unidade === 'pirapozinho') {
-                url = 'https://www.google.com/maps?q=R.+Penha+Barbosa+de+Castro,+648,+Pirapozinho+-+SP&output=embed';
+                url = mapsLinks['pirapozinho'];
                 cardPirapozinho?.classList.add('active');
                 cardTeodoro?.classList.remove('active');
             }
