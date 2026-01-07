@@ -1,697 +1,459 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Piauí Gás - Teodoro Sampaio</title>
-
-  <style>
-    /* Reset e configurações básicas */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #ffffff, #f7f7f7);
-      color: #333;
-    }
-
-    /* Banner de topo */
-    .banner-topo {
-      background-color: red;
-      color: yellow;
-      text-align: center;
-      padding: 12px 10px;
-      font-weight: bold;
-      font-size: 1.3em;
-    }
-
-    .menu {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 10px;
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      position: relative;
-      min-height: 120px;
-    }
-
-    .logo img {
-      max-height: 200px;
-      width: auto;
-    }
-    
-    .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .logo a {
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
- 
-    .logo strong {
-      color: red;
-      font-size: 1.6em;
-    }
-    
-    .logo small {
-      font-size: 0.9em;
-      color: red;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-    }
-    
-    .nav-links a {
-      color: red;
-      font-weight: bold;
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 5px;
-      font-size: 1.1em;
-      transition: color 0.3s;
-    }
-    
-    .nav-links a:hover { 
-      color: blue; 
-    }
-    
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 3px;
-      width: 100%;
-      background-color: blue;
-    }
-
-    .botao-gas {
-      background-color: #0033ff;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 1.1em;
-      transition: background-color 0.3s;
-    }
-    
-    .botao-gas:hover {
-      background-color: #0029cc;
-    }
-    
-    .botao-gas img { 
-      width: 24px; 
-      height: 24px; 
-    }
-
-    /* Menu mobile (hambúrguer) */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 5px;
-      z-index: 1001;
-    }
-    
-    .nav-toggle span {
-      height: 3px;
-      width: 25px;
-      background-color: red;
-      margin: 3px 0;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    /* Animação do hambúrguer */
-    .nav-toggle.ativo span:nth-child(1) {
-      transform: rotate(-45deg) translate(-5px, 6px);
-    }
-    
-    .nav-toggle.ativo span:nth-child(2) {
-      opacity: 0;
-    }
-    
-    .nav-toggle.ativo span:nth-child(3) {
-      transform: rotate(45deg) translate(-5px, -6px);
-    }
-
-    /* Conteúdo principal (com botijão de fundo) */
-    .container {
-      background: url('Gas/botijao.png') no-repeat right center;
-      background-size: cover;
-      padding: 60px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100vh;
-    }
-
-    /* ALTERAÇÕES DE COR E TAMANHO */
-    .info {
-      max-width: 600px;
-      color: #0033ff;
-    }
-    
-    .logo-text {
-      font-size: 48px;
-      font-weight: bold;
-      color: #0033ff;
-    }
-    
-    .slogan {
-      font-size: 56px;
-      font-weight: bold;
-      margin-top: 30px;
-      line-height: 1.2;
-      color: #0033ff;
-    }
-    
-    .servicos {
-      font-size: 36px;
-      margin: 20px 0;
-      color: #0033ff;
-    }
-    
-    .zap-btn {
-      background-color: #25D366;
-      color: #fff;
-      font-weight: bold;
-      font-size: 28px;
-      padding: 20px 35px;
-      border-radius: 5px;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.3s;
-      margin-top: 20px;
-    }
-    
-    .zap-btn:hover { 
-      background-color: #1ebe5b; 
-    }
-    
-    .telefone {
-      margin-top: 25px;
-      font-size: 28px;
-      color: #000000;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    /* Seções internas */
-    .section {
-      padding: 40px 20px;
-      max-width: 700px;
-      margin: auto;
-      text-align: center;
-      font-size: 1.2em;
-      line-height: 1.6em;
-    }
-    
-    h2 {
-      color: red;
-      margin-bottom: 20px;
-      font-size: 1.6em;
-    }
-
-    /* Faixa azul com call-to-action */
-    .faixa-azul {
-      background-color: blue;
-      padding: 12px 20px;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-    
-    .faixa-azul a {
-      background-color: #25D366;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 50px;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    
-    .faixa-azul img { 
-      width: 20px; 
-      height: 20px; 
-    }
-
-    /* Produtos Grid - Layout organizado */
-    .produtos-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-      margin-top: 30px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .produto-item {
-      text-align: center;
-      transition: transform 0.3s ease;
-      padding: 15px;
-      border-radius: 15px;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .produto-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .produto-item img {
-      height: 180px;
-      width: auto;
-      max-width: 100%;
-      object-fit: contain;
-      transition: transform 0.3s;
-      border-radius: 12px;
-      background: transparent;
-    }
-
-    .produto-item img:hover {
-      transform: scale(1.05);
-    }
-
-    .produto-item p {
-      color: blue;
-      font-weight: bold;
-      margin-top: 15px;
-      font-size: 1.1em;
-    }
-
-    /* NOVOS ESTILOS: Galeria de Imagens */
-    .slideshow-container {
-      max-width: 700px;
-      position: relative;
-      margin: auto;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-    .slide {
-      display: none;
-    }
-    .slide img {
-      vertical-align: middle;
-      border-radius: 15px;
-    }
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -22px;
-      color: white;
-      font-weight: bold;
-      font-size: 20px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
-      background-color: rgba(0,0,0,0.5);
-    }
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-    .prev:hover, .next:hover {
-      background-color: rgba(0,0,0,0.8);
-    }
-    .fade {
-      animation-name: fade;
-      animation-duration: 1.5s;
-    }
-    @keyframes fade {
-      from {opacity: .4} 
-      to {opacity: 1}
-    }
-    
-    /* NOVOS ESTILOS: Formulário */
-    .form-container {
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 25px;
-        background-color: #f9f9f9;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        text-align: left;
-    }
-    .form-group {
-        margin-bottom: 20px;
-    }
-    .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-        color: #333;
-    }
-    .form-group input,
-    .form-group select {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 1em;
-    }
-    .form-submit-btn {
-        width: 100%;
-        padding: 15px;
-        background-color: #25D366;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.2em;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    .form-submit-btn:hover {
-        background-color: #1ebe5b;
-    }
-
-    /* Seção de localização com mapa e horário */
-    .localizacao-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      text-align: left;
-      justify-content: center;
-    }
-
-    .mapa-container {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .horario-container {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .horario-extra {
-      background-color: #f8f9fa;
-      padding: 20px;
-      border-radius: 12px;
-      font-size: 1.1em;
-      line-height: 1.6;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .horario-extra strong {
-      color: red;
-      font-size: 1.2em;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    /* Estilo do mapa reduzido */
-    .mapa {
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-    
-    .mapa iframe {
-      width: 100%;
-      height: 320px;
-      border: none;
-      display: block;
-    }
-
-    /* Footer, WhatsApp fixo, etc. */
-    footer {
-      background-color: #f0f0f0;
-      text-align: center;
-      padding: 20px;
-      font-size: 1em;
-      color: #555;
-    }
-    
-    .whatsapp-fixo {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      border-radius: 50%;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      z-index: 1000;
-    }
-    
-    .whatsapp-fixo img { 
-      width: 40px; 
-      height: 40px; 
-    }
-
-    /* Media Queries para Mobile */
-    @media (max-width: 768px) {
-      .banner-topo {
-        font-size: 1.1em;
-        padding: 10px 5px;
-      }
-
-      .menu {
-        padding: 10px 15px;
-        min-height: 90px;
-      }
-
-      .logo img {
-        max-height: 120px;
-      }
-
-      .nav-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        flex-direction: column;
-        gap: 0;
-        z-index: 1000;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 0 0 10px 10px;
-      }
-
-      .nav-links.ativo {
-        display: flex;
-      }
-
-      .nav-links a {
-        font-size: 1.1em;
-        padding: 15px 20px;
-        color: red;
-        border-bottom: 1px solid #f0f0f0;
-        width: 100%;
-        text-align: center;
-        transition: all 0.3s ease;
-      }
-
-      .nav-links a:hover {
-        background-color: #f8f8f8;
-        color: blue;
-      }
-
-      .nav-links a:last-child {
-        border-bottom: none;
-      }
-
-      /* Oculta o botão "Peça seu gás" em telas pequenas */
-      .botao-gas {
-        display: none;
-      }
-
-      .container {
-        flex-direction: column;
-        height: auto;
-        padding: 40px 20px;
-        background-position: center;
-        text-align: center;
-      }
-
-      .logo-text {
-        font-size: 32px;
-      }
-
-      .slogan {
-        font-size: 38px;
-      }
-
-      .servicos {
-        font-size: 24px;
-      }
-
-      .zap-btn {
-        font-size: 20px;
-        padding: 15px 25px;
-      }
-
-      .telefone {
-        font-size: 22px;
-         color: red;
-      }
-
-      .faixa-azul {
-        padding: 10px 15px;
-      }
-
-      .section {
-        padding: 30px 15px;
-        font-size: 1.1em;
-      }
-
-      /* Layout responsivo para localização */
-      .localizacao-container {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .horario-extra {
-        font-size: 1em;
-        padding: 15px;
-      }
-
-      /* Grid mobile - 2 colunas */
-      .produtos-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        margin-top: 20px;
-      }
-
-      .produto-item img {
-        height: 140px;
-      }
-
-      .produto-item p {
-        font-size: 0.9em;
-        margin-top: 10px;
-      }
-
-      .mapa iframe {
-        height: 250px;
-      }
-
-      .whatsapp-fixo {
-        width: 60px;
-        height: 60px;
-        bottom: 15px;
-        right: 15px;
-      }
-
-      .whatsapp-fixo img {
-        width: 30px;
-        height: 30px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .banner-topo {
-        font-size: 1em;
-        padding: 8px 5px;
-      }
-
-      .logo img {
-        max-height: 100px;
-      }
-
-      .logo-text {
-        font-size: 28px;
-      }
-
-      .slogan {
-        font-size: 32px;
-      }
-
-      .servicos {
-        font-size: 20px;
-      }
-
-      .zap-btn {
-        font-size: 18px;
-        padding: 12px 20px;
-      }
-
-      .telefone {
-        font-size: 20px;
-         color: red;
-      }
-
-      .faixa-azul {
-        padding: 8px 10px;
-      }
-
-      .section {
-        padding: 25px 10px;
-        font-size: 1em;
-      }
-
-      .horario-extra {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-
-      /* Grid mobile pequeno - ainda 2 colunas mas mais compacto */
-      .produtos-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-      }
-
-      .produto-item img {
-        height: 120px;
-      }
-
-      .produto-item p {
-        font-size: 0.85em;
-        margin-top: 8px;
-      }
-
-      .mapa iframe {
-        height: 200px;
-      }
-    }
-  </style>
-  <meta name="description" content="Piauí Gás - Entrega de gás e água mineral em Teodoro Sampaio. Gás de cozinha da Nacional Gás com rapidez, preço justo e atendimento de qualidade.">
-<meta name="keywords" content="depósito de gás Teodoro Sampaio, gás Teodoro Sampaio, gás Piauí, gás Nacional Teodoro Sampaio, água mineral Teodoro, gás de cozinha barato, Piauí Gás, gás 13kg Teodoro, revenda de gás Teodoro, gás em Teodoro Sampaio">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piauí Gás - Supergasbras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- RESET E GERAL --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background-color: white; color: #333; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+
+        /* --- HEADER E NAVEGAÇÃO --- */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            /* AUMENTO DO HEADER PARA CABER A LOGO MAIOR */
+            height: 110px; 
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        header.hidden { transform: translateY(-100%); }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* LOGO */
+        .logo {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo img {
+            height: 150px;
+            width: auto;
+            transition: transform 0.3s;
+            display: block;
+            object-fit: contain;
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* MENU DESKTOP */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+            margin-left: auto;
+            margin-right: 10rem;
+        }
+
+        .nav-links li { position: relative; }
+        .nav-links a {
+            text-decoration: none;
+            color: #0047AB;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #FF0000;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #FF0000;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .close-menu { display: none; }
+
+        /* BOTÃO PEÇA AGORA - WHATSAPP */
+        .btn-pedir-desktop {
+            background: linear-gradient(135deg, #25D366 0%, #1ebe5b 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-pedir-desktop:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* --- DROPDOWN UNIDADES (Hover) --- */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%; /* Aparece logo abaixo do item */
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 8px;
+            overflow: hidden;
+            border-top: 4px solid #FF0000;
+        }
+        .dropdown-content a {
+            color: #333;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        .dropdown-content a:last-child { border-bottom: none; }
+        .dropdown-content a:hover { background-color: #f0f0f0; color: #0047AB; }
+        /* Exibe o dropdown ao passar o mouse no pai (.dropdown) */
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* --- MOBILE MENU --- */
+        .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
+        .menu-toggle span { width: 30px; height: 3px; background-color: #0047AB; transition: 0.3s; }
+
+        @media (max-width: 992px) {
+            header { height: 80px; }
+            .logo img { height: 100px; }
+            .logo { position: relative; z-index: 10; }
+            .menu-toggle { display: flex; }
+            .btn-pedir-desktop { display: none; }
+            
+            .nav-links {
+                position: fixed; right: -100%; top: 0; flex-direction: column;
+                background-color: white; width: 80%; height: 100vh;
+                padding: 100px 2rem 2rem; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                justify-content: flex-start; align-items: center; gap: 2rem;
+                z-index: 1001; /* Acima do header */
+            }
+            .nav-links.active { right: 0; }
+            .close-menu {
+                display: block; position: absolute; top: 25px; right: 25px;
+                font-size: 35px; cursor: pointer; color: #FF0000;
+            }
+            /* Dropdown no Mobile - Fica estático */
+            .dropdown-content {
+                position: static; box-shadow: none; transform: none;
+                border: 1px solid #eee; background-color: #f9f9f9;
+                width: 100%; margin-top: 10px; display: none; /* Escondido por padrão no mobile */
+            }
+             /* No mobile, vamos deixar o link principal funcional e o dropdown visível apenas se clicar (JavaScript necessário para toggle melhor, mas o hover funciona básico) */
+            .dropdown:hover .dropdown-content { display: block; }
+        }
+
+        /* --- HERO SECTION COM BOTÕES --- */
+        .hero {
+            /* Altura ajustada para não ficar sobrando muito espaço */
+            height: 550px; 
+            margin-top: 110px; /* Compensa o header fixo */
+            /* Tenta usar imagem local, senão usa placeholder */
+            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('imagens/imagem1.jpeg') center/cover no-repeat, url('https://via.placeholder.com/1920x600') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+        }
+
+        .hero-content h1 {
+            color: white;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Estilo dos botões de redirecionamento */
+        .btn-redirect {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 2.5rem;
+            background-color: white;
+            color: #0047AB;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .btn-redirect i { margin-right: 10px; font-size: 1.3rem; color: #FF0000; }
+
+        .btn-redirect:hover {
+            background-color: #FF0000;
+            color: white;
+            transform: translateY(-5px);
+            border-color: white;
+        }
+        .btn-redirect:hover i { color: white; }
+
+        @media (max-width: 768px) {
+             .hero { height: 450px; margin-top: 80px; }
+             .hero-content h1 { font-size: 2rem; }
+             .hero-buttons { flex-direction: column; gap: 1rem; width: 100%; max-width: 300px; }
+             .btn-redirect { width: 100%; }
+        }
+
+        /* --- SEÇÕES PADRÃO --- */
+        .section-padding { padding: 4rem 5%; max-width: 1400px; margin: 0 auto; }
+        h2.section-title { color: #0047AB; font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
+        p.text-content { color: #333; font-size: 1.1rem; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto; }
+        @media (max-width: 768px) { h2.section-title { font-size: 2rem; } }
+
+        /* --- PRODUTOS --- */
+        .produtos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .produto-card { background-color: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid #eee; }
+        .produto-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .produto-card img { width: 100%; max-width: 180px; height: auto; margin-bottom: 1.5rem; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2)); }
+        .produto-card h3 { color: #0047AB; margin-bottom: 0.5rem; font-size: 1.4rem; }
+        .produto-card p { color: #666; margin-bottom: 1.5rem; }
+
+        /* --- CTA FAIXA --- */
+        .cta-faixa {
+            background-color: #0047AB;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0;
+            margin-top: 2.5rem;
+            box-shadow: 0 8px 18px rgba(0, 71, 171, 0.25);
+            font-weight: 700;
+            flex-wrap: wrap;
+            width: 100vw;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-faixa .cta-text {
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 999px;
+            padding: 0.85rem 1.4rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            text-decoration: none;
+            font-size: 1rem;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .cta-whatsapp i { font-size: 1.2rem; }
+
+        .cta-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 26px rgba(37, 211, 102, 0.45);
+            background-color: #1fb65a;
+        }
+
+        /* --- FORMULÁRIO ONLINE --- */
+        .form-section { padding: 3.5rem 5%; background-color: #ffffff; }
+        .form-container { max-width: 700px; margin: 0 auto; background-color: white; padding: 2.5rem; border-radius: 18px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); border: 1px solid #f0f0f0; }
+        .form-title { color: #0047AB; font-size: 2rem; margin-bottom: 2rem; text-align: center; font-weight: 700; }
+        .form-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
+        .form-group label { color: #333; font-weight: 600; margin-bottom: 0.6rem; font-size: 1rem; }
+        .form-group input,
+        .form-group select { padding: 0.95rem 1rem; border: 2px solid #ddd; border-radius: 10px; font-size: 1rem; font-family: 'Arial', sans-serif; transition: border-color 0.3s, box-shadow 0.3s; }
+        .form-group input:focus,
+        .form-group select:focus { outline: none; border-color: #0047AB; box-shadow: 0 0 0 3px rgba(0, 71, 171, 0.1); }
+        .form-group input::placeholder { color: #999; }
+        .form-group select { cursor: pointer; background-color: white; }
+        .form-group select option { padding: 8px; }
+        .form-group.hidden { display: none; }
+        .form-submit { background-color: #FF0000; color: white; padding: 1.1rem 2.5rem; border: none; border-radius: 50px; font-weight: 800; font-size: 1.1rem; cursor: pointer; width: 100%; transition: all 0.3s ease; box-shadow: 0 8px 15px rgba(255, 0, 0, 0.3); margin-top: 0.5rem; }
+        .form-submit:hover { background-color: #CC0000; transform: translateY(-2px); box-shadow: 0 12px 20px rgba(255, 0, 0, 0.4); }
+        .form-submit:active { transform: translateY(0); }
+        .error-message { color: #e74c3c; font-size: 0.85rem; margin-top: 0.4rem; display: none; }
+        .form-group.error input,
+        .form-group.error select { border-color: #e74c3c; }
+        .form-group.error .error-message { display: block; }
+
+        /* --- HORÁRIOS --- */
+        .horarios-section { padding: 3.5rem 5%; background-color: #f4f7fb; }
+        .horarios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+        .horario-card { background: white; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.06); padding: 1.8rem; border: 1px solid #eef1f6; }
+        .horario-card h3 { color: #FF0000; margin-bottom: 1rem; font-size: 1.3rem; }
+        .horario-card ul { list-style: none; padding: 0; margin: 0; color: #444; line-height: 1.6; }
+        .horario-card ul li { margin-bottom: 0.4rem; }
+
+        /* --- FALE CONOSCO --- */
+        .contato-section { padding: 3.5rem 5%; background-color: #ffffff; }
+        .contato-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+        .contato-card { background: #fff; border: 1px solid #eef1f6; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); padding: 1.8rem; }
+        .contato-card h3 { margin: 0 0 0.8rem 0; color: #FF0000; font-size: 1.25rem; text-align: center; }
+        .contato-card p.lead { text-align: center; color: #555; margin-bottom: 1.2rem; }
+        .contato-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.65rem; }
+        .contato-item { display: flex; align-items: center; gap: 0.6rem; color: #333; font-weight: 600; }
+        .contato-item img { width: 22px; height: 22px; object-fit: contain; }
+        .contato-links { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.8rem; }
+        .contato-links a { display: inline-flex; align-items: center; gap: 0.45rem; color: #0047AB; font-weight: 700; text-decoration: none; }
+        .contato-links a:hover { color: #FF0000; }
+        .contato-links img { width: 20px; height: 20px; object-fit: contain; }
+
+        /* --- FORNECEDOR --- */
+        .fornecedor-section { padding: 3rem 5%; text-align: center; }
+        .fornecedor-section img { max-width: 320px; width: 100%; height: auto; }
+        .fornecedor-section .section-title { font-size: 2rem; }
+
+        /* --- MAPAS --- */
+        .mapa-section { padding: 3rem 0; }
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            width: 100vw;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding: 0 5% 1.5rem;
+        }
+        .map-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 1px solid #eef1f6;
+            overflow: hidden;
+            text-align: center;
+            padding: 1.4rem 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .map-card.active { border-color: #FF0000; box-shadow: 0 10px 22px rgba(255,0,0,0.18); transform: translateY(-2px); }
+        .map-card h3 { margin: 0 0 0.6rem 0; color: #FF0000; font-size: 1.2rem; }
+        .map-card p { margin: 0; color: #555; font-size: 0.95rem; }
+        .mapa-frame-wrap {
+            width: 100vw;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            padding: 0 5%;
+        }
+        .mapa-frame-wrap iframe { width: 100%; height: 300px; border: 0; border-radius: 16px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+
+        /* --- FOOTER --- */
+        footer { background-color: white; color: #333; padding: 1rem 5%; text-align: center; margin-top: 4rem; border-top: 1px solid #eee; }
+        footer a { color: #FF0000; text-decoration: none; font-weight: bold; }
+        footer p { margin-bottom: 5px; font-size: 0.9rem; }
+
+        /* --- WHATSAPP FLUTUANTE --- */
+        .whatsapp-float {
+            position: fixed; width: 75px; height: 75px; bottom: 30px; right: 30px;
+            background: linear-gradient(45deg, #25D366, #128C7E); color: white; border-radius: 50%;
+            text-align: center; font-size: 40px; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.6);
+            z-index: 1000; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            animation: pulse 2s infinite; transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        @media (max-width: 768px) { .whatsapp-float { width: 65px; height: 65px; font-size: 35px; bottom: 20px; right: 20px; } }
+
+        /* --- MODAL (BALÃOZINHO) --- */
+        .modal {
+            display: none; /* Escondido por padrão */
+            position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6); /* Fundo escuro transparente */
+            justify-content: center; align-items: center;
+            backdrop-filter: blur(5px); /* Efeito de desfoque no fundo */
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background-color: white; padding: 2.5rem; border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); max-width: 450px; width: 90%; text-align: center;
+            position: relative; animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-content h3 { color: #0047AB; margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .unidade-buttons { display: flex; flex-direction: column; gap: 1rem; }
+        .btn-unidade {
+            background-color: white; color: #0047AB; padding: 1.2rem;
+            border: 2px solid #0047AB; border-radius: 15px;
+            cursor: pointer; font-size: 1.1rem; font-weight: bold;
+            transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .btn-unidade i { font-size: 1.4rem; color: #25D366; }
+        .btn-unidade:hover { background-color: #0047AB; color: white; transform: translateY(-3px); border-color: transparent; }
+        .btn-unidade:hover i { color: white; }
+        .close-modal-btn {
+            position: absolute; top: 15px; right: 20px; font-size: 25px;
+            color: #999; cursor: pointer; background: none; border: none;
+        }
+        .close-modal-btn:hover { color: #FF0000; }
+
+        /* --- MODAL IMAGEM --- */
+        .modal-content.image-modal { background: transparent; padding: 0; box-shadow: none; max-width: 90vw; }
+        .modal-content.image-modal img { max-width: 90vw; max-height: 80vh; border-radius: 16px; }
+        .close-modal-btn.image-close { top: 10px; right: 10px; color: #fff; }
+    </style>
+     <meta name="description" content="Piauí Gás - Entrega de gás e água mineral em Teodoro Sampaio. Gás de cozinha da Supergasbras com rapidez, preço justo e atendimento de qualidade.">
+<meta name="keywords" content="depósito de gás Teodoro Sampaio, depósito de gás Teodoro Sampaio, gás Teodoro Sampaio, gás Pirapozinho,  gás Piauí, gás Supergasbras Teodoro Sampaio,  gás Supergasbras Pirapozinho, água mineral Pirapozinho, gás de cozinha barato, Piauí Gás, gás 13kg Teodoro, gás 13kg Pirapozinho, revenda de gás Teodoro, revenda de gás Pirapo, gás em Teodoro Sampaio, gás em Pirapozinho">
 <meta name="author" content="Carlos Henrique N. Borges">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="Piauí Gás - Gás e Água Mineral em Teodoro Sampaio">
-<meta property="og:description" content="Pediu, Chegou! Gás de cozinha da Nacional Gás e água mineral com entrega rápida em Teodoro Sampaio.">
+<meta property="og:title" content="Piauí Gás - Gás em Teodoro Sampaio">
+<meta property="og:description" content="Pediu, Chegou! Gás de cozinha da Supergasbras com entrega rápida em Teodoro Sampaio.">
+<meta property="og:description" content="Pediu, Chegou! Gás de cozinha da Supergasbras e água mineral com entrega rápida em Pirapozinho.">
 <meta property="og:image" content="https://www.piauigas.com.br/botijao.png"> <meta property="og:url" content="https://www.piauigas.com.br"> <meta property="og:type" content="website">
 
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -700,335 +462,566 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 </head>
-
+</head>
 <body>
 
-  <div class="banner-topo">
-    GÁS DE COZINHA APENAS R$ 100,00 RETIRANDO NA LOJA OU DELIVERY
-  </div>
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <img src="imagens/logo.png" alt="Piauí Gás Logo">
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <span></span><span></span><span></span>
+            </div>
 
-  <header class="menu">
-    <div class="logo">
-      <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank" aria-label="Contato WhatsApp">
-       <img src="Gas/logo.png" alt="Logo Piauí Gás" >
-      </a>
-    </div>
+            <ul class="nav-links" id="navLinks">
+                <span class="close-menu" id="closeMenu">×</span>
+                <li><a href="#inicio"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#produtos"><i class="fas fa-fire"></i> Produtos</a></li>
+                <li class="dropdown">
+                    <a href="#unidades-anchor"><i class="fas fa-map-marker-alt"></i> Unidades <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="teodoro.html">Teodoro Sampaio</a>
+                        <a href="pirapozinho.html">Pirapozinho</a>
+                    </div>
+                </li>
+                <li><a href="#sobre"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                <li><a href="#fale-conosco"><i class="fas fa-phone"></i> Contato</a></li>
+            </ul>
 
-    <div class="nav-toggle" id="navToggle" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+            <button class="btn-pedir-desktop" onclick="abrirModal()">
+                <i class="fab fa-whatsapp"></i> Peça Agora
+            </button>
+        </nav>
+    </header>
 
-    <nav class="nav-links" id="menuMobile">
-      <a href="#home" class="active" onclick="scrollToSection('home')">Home</a>
-      <a href="#sobre" onclick="scrollToSection('sobre')">Sobre Nós</a>
-      <a href="#produtos" onclick="scrollToSection('produtos')">Produtos</a>
-      <a href="#fale-conosco" onclick="scrollToSection('fale-conosco')">Contato</a>
-    </nav>
-
-    <a class="botao-gas" href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
-      <img src="Gas/iconewhats.svg" alt="WhatsApp"> Peça seu gás
-    </a>
-  </header>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menuMobile');
-      const toggle = document.getElementById('navToggle');
-      
-      menu.classList.toggle('ativo');
-      toggle.classList.toggle('ativo');
-    }
-
-    function closeMenu() {
-      const menu = document.getElementById('menuMobile');
-      const toggle = document.getElementById('navToggle');
-      
-      menu.classList.remove('ativo');
-      toggle.classList.remove('ativo');
-    }
-
-    function scrollToSection(sectionId) {
-      closeMenu();
-      
-      const targetSection = document.getElementById(sectionId);
-      if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 120; // Ajuste para compensar o menu fixo
-        
-        // Scroll mais lento e suave
-        smoothScrollTo(offsetTop, 1500); // 1.5 segundos de duração
-      }
-    }
-
-    function smoothScrollTo(targetPosition, duration) {
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      let startTime = null;
-
-      function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      }
-
-      // Função de easing para movimento mais suave
-      function easeInOutQuad(t, b, c, d) {
-        t /= d/2;
-        if (t < 1) return c/2*t*t + b;
-        t--;
-        return -c/2 * (t*(t-2) - 1) + b;
-      }
-
-      requestAnimationFrame(animation);
-    }
-
-    // Fechar menu ao clicar fora dele
-    document.addEventListener('click', function(event) {
-      const menu = document.getElementById('menuMobile');
-      const toggle = document.getElementById('navToggle');
-      
-      if (!menu.contains(event.target) && !toggle.contains(event.target)) {
-        menu.classList.remove('ativo');
-        toggle.classList.remove('ativo');
-      }
-    });
-
-    // Scroll suave para as seções com velocidade personalizada
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        scrollToSection(targetId);
-      });
-    });
-  </script>
-
-  <div class="container" id="home">
-    <div class="info">
-      <div class="logo-text">PIAUÍ GÁS<sup></sup></div>
-      <div class="slogan">PEDIU, <br> CHEGOU!</div>
-      <div class="servicos">Gás e Água</div>
-      <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." class="zap-btn">Peça aqui seu gás</a>
-  <div class="telefone"><span style="color: white;">Ou ligue<br>(18) 99714-6344</span></div>
-    </div>
-  </div>
-
-  <section class="section">
-    <h2>Por que comprar Nacional Gás?</h2>
-    <p>O gás da Nacional Gás é sinônimo de qualidade, segurança e economia para o seu dia a dia. Com alto rendimento e inspeção rigorosa, garante um preparo mais eficiente dos alimentos e total tranquilidade para sua família. Presente em milhões de lares, a Nacional Gás é uma marca confiável, com tradição no mercado e compromisso com o consumidor, oferecendo um produto seguro, durável e com entrega rápida.</p>
-  </section>
-
-  <section class="section">
-    <img src="Gas/botijaoanimado.png" alt="Informativo" style="max-width: 100%; height: auto; width: 400px; border-radius: 12px;">
-  </section>
-
-  <div class="faixa-azul">
-    <span>Pediu, Chegou! Peça aqui</span>
-    <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
-      <img src="Gas/iconewhats.svg" alt="WhatsApp"> Peça seu Gás
-    </a>
-  </div>
-
-  <section class="section" id="produtos">
-    <h2>Nossos Produtos</h2>
-    <div class="produtos-grid">
-      <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20G%C3%A1s%20P13" target="_blank">
-          <img src="Gas/botija.jpg" alt="Gás P13">
-        </a>
-        <p>Gás P13 - R$ 100,00</p>
-      </div>
-      <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20G%C3%A1s%20P45" target="_blank">
-          <img src="imagens/p45.png" alt="Gás P45">
-        </a>
-        <p>Gás P45</p>
-      </div>
-      <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20Carv%C3%A3o%20" target="_blank">
-          <img src="Gas/carvão.png" alt="Carvão Vegetal">
-        </a>
-        <p>Carvão Vegetal - 3 e 5kg</p>
-      </div>
-      <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20Registro%20ou%20Acess%C3%B3rios" target="_blank">
-          <img src="Gas/registro.png" alt="Registro">
-        </a>
-        <p>Registro e Acessórios </p>
-      </div>
-    </div>
-  </section>
-  
-
-  <section class="section" id="pedido-form">
-      <h2>Faça seu Pedido Online</h2>
-      <div class="form-container">
-          <form id="whatsappForm">
-              <div class="form-group">
-                  <label for="nome">Nome:</label>
-                  <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-              </div>
-              <div class="form-group">
-                  <label for="endereco">Endereço:</label>
-                  <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro" required>
-              </div>
-              <div class="form-group">
-                  <label for="produto">Produto Desejado:</label>
-                  <select id="produto" name="produto" required>
-                      <option value="" disabled selected>Selecione um produto</option>
-                      <option value="Gás P13">Gás P13</option>
-                      <option value="Gás P45">Gás P45</option>
-                      <option value="Carvão Vegetal 3kg">Carvão Vegetal 3kg</option>
-                      <option value="Carvão Vegetal 5kg">Carvão Vegetal 5kg</option>
-                      <option value="Registro e Acessórios">Registro e Acessórios</option>
-                  </select>
-              </div>
-              <div class="form-group">
-                  <label for="pagamento">Forma de Pagamento:</label>
-                  <select id="pagamento" name="pagamento" required>
-                      <option value="" disabled selected>Selecione uma opção</option>
-                      <option value="Dinheiro">Dinheiro</option>
-                      <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
-                      <option value="Pix">Pix</option>
-                  </select>
-              </div>
-              <button type="submit" class="form-submit-btn">Enviar Pedido pelo WhatsApp</button>
-          </form>
-      </div>
-  </section>
-
-  <section class="section" id="contato" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; text-align: left;">
-    <div style="flex: 1; min-width: 300px;">
-      <h2>Onde Estamos</h2>
-      <p>Av. Cuiabá, 1969 - Centro – Teodoro Sampaio/SP</p>
-      <div class="localizacao-container">
-        <div class="mapa-container">
-          <div class="mapa">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.2924429163914!2d-52.16541782482347!3d-22.530163779495096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94951aa7e1e3e361%3A0x6efb9f3c0c207e8c!2sAv.%20Cuiab%C3%A1%2C%201969%20-%20Centro%2C%20Teodoro%20Sampaio%20-%20SP%2C%2019290-000!5e0!3m2!1spt-BR!2sbr!4v1719521234567" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1><span style="color: #333fe2;">Piauí</span> <span style="color: #FF0000;">Gás</span> presente em<br>Teodoro e Pirapozinho</h1>
+            
+            <div class="hero-buttons">
+                <a href="teodoro.html" class="btn-redirect">
+                    <i class="fas fa-map-marker-alt"></i> Teodoro Sampaio
+                </a>
+                <a href="pirapozinho.html" class="btn-redirect">
+                    <i class="fas fa-map-marker-alt"></i> Pirapozinho
+                </a>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <section class="section-padding" id="sobre">
+            <h2 class="section-title">Por que comprar com a Piauí Gás?</h2>
+            <p class="text-content">
+                Por que usamos o gás da Supergasbras que é sinônimo de qualidade, segurança e economia para o seu dia a dia. Com alto rendimento e inspeção rigorosa, garante um preparo mais eficiente dos alimentos e total tranquilidade para sua família. Presente em milhões de lares, a Supergasbras é uma marca confiável, com tradição no mercado e compromisso com o consumidor, oferecendo um produto seguro, durável e com entrega rápida.
+            </p>
+            <p class="text-content">
+                 <strong>Entrega em Teodoro Sampaio e Pirapozinho</strong>
+            </p>
+            <p class="text-content" style="margin-top: 1rem;">
+                <img src="imagens/super.png" alt="Supergasbras" style="max-width: 700px; width: 100%; height: auto; border-radius: 16px; cursor: pointer;" onclick="abrirModalImagem('imagens/super.png')">
+            </p>
+            <br>
+            <p class="text-content">
+                Somos revendedores de Gás GLP, atuando com responsabilidade, agilidade e compromisso com a sua segurança. Representamos a Supergasbras, uma das marcas mais confiáveis do país, com mais de 75 anos de atuação no mercado, levando energia segura para milhões de lares brasileiros.
+            </p>
+            <p class="text-content">
+                A Piauí Gás tem mais de 30 anos de experiência no setor, e estamos legalmente estabelecidos com o CNPJ 51.508.998/0001-70. Nossa missão é garantir praticidade, confiança e atendimento de qualidade em cada entrega.
+            </p>
+    </section>
+
+    <section class="section-padding" id="produtos" style="background-color: #f9f9f9;">
+        <h2 class="section-title">Nossos Produtos</h2>
+        
+        <div class="produtos-grid">
+            <div class="produto-card" onclick="abrirModalProduto('Gás P13')">
+                <img src="imagens/botija.png" alt="Gás P13">
+                <h3>Gás P13</h3>
+                <p>Ideal para residências</p>
+                <button class="btn-comprar">Pedir P13</button>
+            </div>
+
+            <div class="produto-card" onclick="abrirModalProduto('Gás P45')">
+                <img src="imagens/p45.png" alt="Gás P45">
+                <h3>Gás P45</h3>
+                <p>Para comércios e indústrias</p>
+                <button class="btn-comprar">Pedir P45</button>
+            </div>
+            
+             <div class="produto-card" onclick="redirecionarAguaPirapozinho()">
+                <img src="imagens/galao.png" alt="Água">
+                <h3>Água Mineral</h3>
+                <p>Galão de 20 Litros</p>
+                <button class="btn-comprar">Pedir Água</button>
+            </div>
+        </div>
+
+        <div class="cta-faixa">
+            <span class="cta-text">Pediu, Chegou! Peça aqui</span>
+            <button class="cta-whatsapp" onclick="abrirModal()">
+                <i class="fab fa-whatsapp"></i>
+                Peça seu Gás
+            </button>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="form-container">
+            <h2 class="form-title">Faça seu Pedido Online</h2>
+            <form id="pedidoForm">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    <div class="error-message">Por favor, insira um nome válido</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro" required>
+                    <div class="error-message">Por favor, insira um endereço válido</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Cidade:</label>
+                    <select id="cidade" name="cidade" required>
+                        <option value="">Selecione a cidade</option>
+                        <option value="Teodoro Sampaio">Teodoro Sampaio</option>
+                        <option value="Pirapozinho">Pirapozinho</option>
+                    </select>
+                    <div class="error-message">Por favor, selecione uma cidade</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="produto">Produto Desejado:</label>
+                    <select id="produto" name="produto" required>
+                        <option value="">Selecione um produto</option>
+                        <option value="P13 - 13kg">P13 - 13kg</option>
+                        <option value="P45 - 45kg">P45 - 45kg</option>
+                        <option value="Galão de Água" id="opcaoAgua">Galão de Água</option>
+                    </select>
+                    <div class="error-message">Por favor, selecione um produto</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" name="quantidade" min="1" placeholder="Digite a quantidade" required>
+                    <div class="error-message">Por favor, insira uma quantidade válida</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pagamento">Forma de Pagamento:</label>
+                    <select id="pagamento" name="pagamento" required>
+                        <option value="">Selecione a forma de pagamento</option>
+                        <option value="PIX">PIX</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão Crédito">Cartão Crédito</option>
+                        <option value="Cartão Débito">Cartão Débito</option>
+                    </select>
+                    <div class="error-message">Por favor, selecione uma forma de pagamento</div>
+                </div>
+
+                <div class="form-group hidden" id="trocoGroup">
+                    <label for="troco">Precisa de troco?</label>
+                    <select id="troco" name="troco">
+                        <option value="">Selecione</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="form-submit">Enviar Pedido</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="horarios-section">
+        <h2 class="section-title">Horário de Atendimento</h2>
+        <div class="horarios-grid">
+            <div class="horario-card">
+                <h3>Teodoro Sampaio</h3>
+                <ul>
+                    <li>Segunda à Sábado: 08:00h às 21:00h</li>
+                    <li>Domingos e Feriados: 08:00h às 14:00h</li>
+                    <li><em>*Feriados sujeitos a alteração.</em></li>
+                </ul>
+            </div>
+            <div class="horario-card">
+                <h3>Pirapozinho</h3>
+                <ul>
+                    <li>Segunda à Sábado: 08:00 – 20:00</li>
+                    <li>Domingo: 08:00 – 13:00</li>
+                    <li><em>*Feriados sujeitos a alteração.</em></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="mapa-section" id="contato">
+        <h2 class="section-title">Onde Estamos</h2>
+        <p class="text-content" style="margin-bottom: 2rem;">Escolha a unidade para ver a localização no mapa.</p>
+
+        <div class="map-grid">
+            <div class="map-card active" id="card-teodoro" onclick="trocarMapa('teodoro')">
+                <h3>Teodoro Sampaio</h3>
+                <p>Av. Cuiabá, 1969 - Centro – Teodoro Sampaio/SP</p>
+            </div>
+
+            <div class="map-card" id="card-pirapozinho" onclick="trocarMapa('pirapozinho')">
+                <h3>Pirapozinho</h3>
+                <p>R. Penha Barbosa de Castro, 648, Pirapozinho - SP, 19200-000</p>
+            </div>
+        </div>
+
+        <div class="mapa-frame-wrap">
+            <iframe 
+                id="mapaIframe"
+                src="https://www.google.com/maps?q=Av.+Cuiab%C3%A1,+1969+-+Centro,+Teodoro+Sampaio+-+SP&output=embed" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <section class="contato-section" id="fale-conosco">
+        <h2 class="section-title">Fale Conosco</h2>
+        <p class="text-content" style="margin-bottom: 2rem;">Pelo nosso canal de atendimento. Estamos prontos para atendê-lo.</p>
+
+        <div class="contato-grid">
+            <div class="contato-card">
+                <h3>Teodoro Sampaio</h3>
+                <p class="lead">Nossos contatos:</p>
+                <ul class="contato-list">
+                    <li class="contato-item"><img src="imagens/tele.png" alt="Telefone">Telefone: <a href="tel:+5518997146344" style="color:#0047AB; text-decoration:none; font-weight:700;">(18) 99714-6344</a></li>
+                    <li class="contato-item"><i class="fab fa-whatsapp" style="color:#25D366; font-size:1.2rem;"></i>WhatsApp: <a href="https://wa.me/5518997146344" target="_blank" rel="noopener" style="color:#0047AB; text-decoration:none; font-weight:700;">(18) 99714-6344</a></li>
+                </ul>
+                <div class="contato-links">
+                  <br>  <span style="font-weight:700; color:#333;">Siga-nos:</span>
+                    <a href="https://www.facebook.com/profile.php?id=61578129056867" target="_blank" rel="noopener">
+                        <img src="imagens/face.png" alt="Facebook">Facebook
+                    </a>
+                    <a href="https://www.instagram.com/piauigas_/" target="_blank" rel="noopener">
+                        <img src="imagens/insta.png" alt="Instagram">Instagram
+                    </a>
+                </div>
+            </div>
+
+            <div class="contato-card">
+                <h3>Pirapozinho</h3>
+                <p class="lead">Nossos contatos:</p>
+                <ul class="contato-list">
+                    <li class="contato-item"><img src="imagens/tele.png" alt="Telefone">Telefone: <a href="tel:+551832691612" style="color:#0047AB; text-decoration:none; font-weight:700;">(18) 3269-1612</a> / <a href="tel:+551832691139" style="color:#0047AB; text-decoration:none; font-weight:700;">(18) 3269-1139</a></li>
+                    <li class="contato-item"><i class="fab fa-whatsapp" style="color:#25D366; font-size:1.2rem;"></i>WhatsApp: <a href="https://wa.me/5518997314964" target="_blank" rel="noopener" style="color:#0047AB; text-decoration:none; font-weight:700;">(18) 99731-4964</a></li>
+                </ul>
+                <div class="contato-links">
+                    <br><span style="font-weight:700; color:#333;">Siga-nos:</span>
+                    <a href="#" aria-label="Facebook Pirapozinho ">
+                        <img src="imagens/face.png" alt="Facebook">Facebook
+                    </a>
+                    <a href="https://www.instagram.com/pontalgas/" target="_blank" rel="noopener">
+                        <img src="imagens/insta.png" alt="Instagram">Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="imagens/logosupergas.png" alt="Fornecedor Supergasbras" style="max-width: 80px; height: auto; margin-bottom: 1rem;">
+        <p>Copyright © 2025 Piauí Gás — <a href="privacidade.html" style="color: #FF0000; text-decoration: none; font-weight: bold;">Política de Privacidade</a></p>
+        <p>CNPJ 51.508.998/0001-70</p>
+        <br>
+        <p style="font-size: 0.9rem; opacity: 0.7;">
+            <strong>Dev:</strong> <a href="https://carlos732r.github.io/portfolio_/" target="_blank" rel="noopener" style="color: #FF0000; text-decoration: none; font-weight: bold;">Carlos Henrique N. Borges</a> - 
+            <a href="https://www.devdigitalbr.com.br" target="_blank" rel="noopener" style="color: #FF0000; text-decoration: none; font-weight: bold;">Dev Digital BR</a>
+        </p>
+    </footer>
+
+    <div class="whatsapp-float" onclick="abrirModal()">
+        <i class="fab fa-whatsapp"></i>
     </div>
-    <div style="flex: 1; min-width: 300px;">
-      <h2>Horário de Atendimento</h2>
-      <div class="horario-extra">
-        <p>Segunda à Sábado 08:00h às 21:00h</p>
-        <p>Domingos e Feriados 08:00h às 14:00h</p>
-        <p style="margin-top: 10px; font-style: italic;">*Feriados sujeito a alteração.</p>
-      </div>
+
+    <div class="modal" id="modalUnidade">
+        <div class="modal-content">
+            <button class="close-modal-btn" onclick="fecharModal()">×</button>
+            <h3><i class="fab fa-whatsapp" style="color: #25D366;"></i> Falar com qual unidade?</h3>
+            <p style="margin-bottom: 1.5rem; color: #666;">Selecione a cidade mais próxima para agilizar seu atendimento.</p>
+            
+            <div class="unidade-buttons">
+                <button class="btn-unidade" onclick="redirecionarWhatsApp('teodoro')">
+                     Teodoro Sampaio <br><small>(18) 99714-6344</small>
+                </button>
+                <button class="btn-unidade" onclick="redirecionarWhatsApp('pirapozinho')">
+                     Pirapozinho <br><small>(18) 99731-1964</small>
+                </button>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <section class="section" id="sobre" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; text-align: left;">
-    <div style="flex: 1; min-width: 300px;">
-      <h2>Sobre Nós</h2>
-      <p>Somos revendedores de Gás GLP, atuando com responsabilidade, agilidade e compromisso com a sua segurança. Representamos a <strong>Nacional Gás</strong>, uma das marcas mais confiáveis do país, com mais de <strong>70 anos de atuação</strong> no mercado, levando energia segura para milhões de lares brasileiros.</p>
-      <p style="margin-top: 15px;">A <strong>Piauí Gás</strong> tem mais de <strong>30 anos de experiência</strong> no setor, e estamos legalmente estabelecidos com o CNPJ <strong>51.508.998/0001-70</strong>. Nossa missão é garantir praticidade, confiança e atendimento de qualidade em cada entrega.</p>
+    <!-- Modal para ampliar imagem -->
+    <div class="modal" id="modalImagem">
+        <div class="modal-content image-modal">
+            <button class="close-modal-btn image-close" onclick="fecharModalImagem()">×</button>
+            <img id="modalImagemSrc" src="" alt="Imagem ampliada">
+        </div>
     </div>
-    <div style="flex: 1; min-width: 300px;" id="fale-conosco">
-      <h2>Fale Conosco</h2>
-      <p>Pelo nosso canal de atendimento. Estamos prontos para atendê-lo.</p><br>
-      <strong>Nossos contatos:</strong>
-      <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
-        <li style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-          <a href="tel:+5518997146344">
-            <img src="Gas/tele.png" alt="Telefone" style="width: 24px; height: 24px;">
-          </a>
-          <a href="tel:+5518997146344" style="text-decoration: none; color: #333; font-weight: bold;">
-            (18) 99714-6344
-          </a>
-        </li>
-        <li style="display: flex; align-items: center; gap: 10px;">
-          <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank">
-            <img src="Gas/iconewhats.svg" alt="WhatsApp" style="width: 24px; height: 24px;">
-          </a>
-          <a href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank" style="text-decoration: none; color: #333; font-weight: bold;">
-            (18) 99714-6344
-          </a>
-        </li>
-      </ul><br>
-      <strong>Siga-nos:</strong>
-      <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
-        <a href="https://facebook.com" target="_blank">
-          <img src="Gas/face.png" alt="Facebook" style="width: 28px; height: 28px;">
-        </a>
-        <a href="https://instagram.com" target="_blank">
-          <img src="Gas/insta.png" alt="Instagram" style="width: 28px; height: 28px;">
-        </a>
-      </div>
-    </div>
-  </section>
 
-  <div class="fornecedor" style="text-align: center; padding: 30px 0 10px; font-weight: bold; color: red; font-size: 1.3em;">
-    Fornecedor:<br>
-    <img src="Gas/nacional.png" alt="Logo Nacional Gás" style="margin-top: 10px; max-height: 160px;">
-  </div>
+    <script>
+        // Variável para armazenar produto se clicado nos cards
+        let produtoSelecionado = '';
 
-  <footer>
-    <p>
-      Copyright © 2025 Piauí Gás —
-      <a href="privacidade.html" style="color: #333; text-decoration: underline;">Política de Privacidade</a>
-    </p>
-   <p>Dev: <a href="https://www.instagram.com/carlborges_3/" target="_blank" style="color: #333; text-decoration: none; font-weight: bold;">Carlos Henrique N. Borges</a> - <a href="https://www.devdigitalbr.com.br" target="_blank" style="color: #333; text-decoration: none; font-weight: bold;">Dev Digital BR</a></p>
-  </footer>
+        // --- LÓGICA DO MODAL ---
+        const modal = document.getElementById('modalUnidade');
+        const modalImagem = document.getElementById('modalImagem');
+        const modalImagemSrc = document.getElementById('modalImagemSrc');
 
-  <a class="whatsapp-fixo" href="https://wa.me/5518997146344?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20pedir%20um%20g%C3%A1s." target="_blank" aria-label="WhatsApp">
-    <img src="Gas/iconewhats.svg" alt="WhatsApp">
-  </a>
-  
-  <script>
-    // Lógica da Galeria de Imagens
-    let slideIndex = 1;
-    showSlides(slideIndex);
-
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-
-    function showSlides(n) {
-      let i;
-      let slides = document.getElementsByClassName("slide");
-      if (slides.length === 0) return; // Evita erro se a galeria não for encontrada
-      if (n > slides.length) {slideIndex = 1}    
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-      }
-      slides[slideIndex-1].style.display = "block";  
-    }
-    
-    // Lógica do Formulário do WhatsApp
-    document.getElementById('whatsappForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const nome = document.getElementById('nome').value;
-        const endereco = document.getElementById('endereco').value;
-        const produto = document.getElementById('produto').value;
-        const pagamento = document.getElementById('pagamento').value;
-        const telefone = '5518997146344'; // Número do WhatsApp sem '+' ou ' '
-
-        // Validação simples para garantir que os campos não estão vazios
-        if (!nome || !endereco || !produto || !pagamento) {
-            alert('Por favor, preencha todos os campos.');
-            return;
+        function abrirModal() {
+            modal.classList.add('active');
+             // Bloqueia rolagem do fundo
+             document.body.style.overflow = 'hidden';
         }
 
-        // Monta a mensagem
-        const mensagem = `Olá, gostaria de fazer um pedido pelo site!\n\n*Nome:* ${nome}\n*Endereço:* ${endereco}\n*Produto:* ${produto}\n*Forma de Pagamento:* ${pagamento}`;
+        // Se vier de um produto, salva o nome antes de abrir
+        function abrirModalProduto(nomeProduto) {
+            produtoSelecionado = nomeProduto;
+            abrirModal();
+        }
 
-        // Codifica a mensagem para a URL
-        const mensagemCodificada = encodeURIComponent(mensagem);
+        function fecharModal() {
+            modal.classList.remove('active');
+            produtoSelecionado = ''; // Limpa produto ao fechar
+            document.body.style.overflow = 'auto'; // Libera rolagem
+        }
 
-        // Cria o link do WhatsApp
-        const url = `https://wa.me/${telefone}?text=${mensagemCodificada}`;
+        // Fechar clicando fora do conteúdo do modal
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) { fecharModal(); }
+        });
 
-        // Abre o WhatsApp em uma nova aba
-        window.open(url, '_blank');
-    });
-  </script>
+        // --- MODAL DE IMAGEM (AMPLIAR) ---
+        function abrirModalImagem(src) {
+            if (!modalImagem || !modalImagemSrc) return;
+            modalImagemSrc.src = src;
+            modalImagem.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
+        function fecharModalImagem() {
+            if (!modalImagem || !modalImagemSrc) return;
+            modalImagem.classList.remove('active');
+            modalImagemSrc.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar clicando fora do conteúdo do modal de imagem
+        modalImagem?.addEventListener('click', (e) => {
+            if (e.target === modalImagem) { fecharModalImagem(); }
+        });
+
+        // --- REDIRECIONAMENTO WHATSAPP ---
+        function redirecionarWhatsApp(unidade) {
+            let numero = '';
+            if (unidade === 'teodoro') {
+                numero = '5518997146344';
+            } else if (unidade === 'pirapozinho') {
+                numero = '5518997311964';
+            }
+
+            let mensagem = 'Olá! Vim pelo site da Piauí Gás.';
+            if (produtoSelecionado) {
+                mensagem += ` Gostaria de pedir o *${produtoSelecionado}*.`;
+            } else {
+                mensagem += ' Gostaria de fazer um pedido.';
+            }
+
+            const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+            fecharModal();
+        }
+
+        // --- MENU MOBILE E SCROLL ---
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const closeMenu = document.getElementById('closeMenu');
+        const header = document.getElementById('header');
+
+        menuToggle.addEventListener('click', () => navLinks.classList.add('active'));
+        closeMenu.addEventListener('click', () => navLinks.classList.remove('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.classList.add('hidden');
+            } else {
+                header.classList.remove('hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // --- FORMULÁRIO ONLINE ---
+        const pagamentoSelect = document.getElementById('pagamento');
+        const trocoGroup = document.getElementById('trocoGroup');
+        const pedidoForm = document.getElementById('pedidoForm');
+        const cidadeSelect = document.getElementById('cidade');
+        const opcaoAgua = document.getElementById('opcaoAgua');
+        const produtoSelect = document.getElementById('produto');
+
+        // Mostrar/ocultar galão de água conforme a cidade
+        cidadeSelect.addEventListener('change', () => {
+            if (cidadeSelect.value === 'Teodoro Sampaio') {
+                // Ocultar opção de galão
+                opcaoAgua.style.display = 'none';
+                // Se galão foi selecionado, limpar
+                if (produtoSelect.value === 'Galão de Água') {
+                    produtoSelect.value = '';
+                }
+            } else if (cidadeSelect.value === 'Pirapozinho') {
+                // Mostrar opção de galão
+                opcaoAgua.style.display = 'block';
+            } else {
+                opcaoAgua.style.display = 'none';
+            }
+        });
+
+        // Mostrar/ocultar campo de troco quando selecionar "Dinheiro"
+        pagamentoSelect.addEventListener('change', () => {
+            if (pagamentoSelect.value === 'Dinheiro') {
+                trocoGroup.classList.remove('hidden');
+            } else {
+                trocoGroup.classList.add('hidden');
+            }
+        });
+
+        // Validação do formulário
+        pedidoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Limpar erros anteriores
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+
+            let isValid = true;
+
+            // Validar Nome
+            const nome = document.getElementById('nome');
+            if (nome.value.trim().length < 3) {
+                nome.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validar Endereço
+            const endereco = document.getElementById('endereco');
+            if (endereco.value.trim().length < 5) {
+                endereco.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validar Cidade
+            const cidade = document.getElementById('cidade');
+            if (cidade.value === '') {
+                cidade.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validar Produto
+            const produto = document.getElementById('produto');
+            if (produto.value === '') {
+                produto.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validar Quantidade
+            const quantidade = document.getElementById('quantidade');
+            if (quantidade.value === '' || quantidade.value < 1) {
+                quantidade.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validar Pagamento
+            const pagamento = document.getElementById('pagamento');
+            if (pagamento.value === '') {
+                pagamento.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            // Validar Troco se Dinheiro foi selecionado
+            if (pagamento.value === 'Dinheiro') {
+                const troco = document.getElementById('troco');
+                if (troco.value === '') {
+                    trocoGroup.classList.add('error');
+                    isValid = false;
+                }
+            }
+
+            if (isValid) {
+                // Preparar mensagem do WhatsApp
+                let mensagem = `*Novo Pedido Online*\n\n`;
+                mensagem += `📝 *Nome:* ${nome.value}\n`;
+                mensagem += `📍 *Endereço:* ${endereco.value}\n`;
+                mensagem += `🏙️ *Cidade:* ${cidade.value}\n`;
+                mensagem += `🛢️ *Produto:* ${produto.value}\n`;
+                mensagem += `📦 *Quantidade:* ${quantidade.value} unidade(s)\n`;
+                mensagem += `💳 *Pagamento:* ${pagamento.value}\n`;
+                if (pagamento.value === 'Dinheiro') {
+                    mensagem += `💵 *Troco:* ${document.getElementById('troco').value}\n`;
+                }
+
+                // Definir número do WhatsApp baseado na cidade
+                let numero = '';
+                if (cidade.value === 'Teodoro Sampaio') {
+                    numero = '5518997146344';
+                } else if (cidade.value === 'Pirapozinho') {
+                    numero = '5518997311964';
+                }
+
+                // Enviar via WhatsApp
+                const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+                window.open(url, '_blank');
+
+                // Limpar formulário
+                pedidoForm.reset();
+                trocoGroup.classList.add('hidden');
+                opcaoAgua.style.display = 'none';
+
+                alert('Pedido enviado! Você será redirecionado para o WhatsApp.');
+            }
+        });
+
+        // --- REDIRECIONAMENTO DIRETO PARA ÁGUA (PIRAPOZINHO) ---
+        function redirecionarAguaPirapozinho() {
+            const numeroPirapozinho = '5518997311964';
+            const mensagem = 'Olá! Gostaria de pedir um Galão de Água.';
+            const url = `https://wa.me/${numeroPirapozinho}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        }
+
+        // --- TROCAR MAPA ---
+        const mapaIframe = document.getElementById('mapaIframe');
+        const cardTeodoro = document.getElementById('card-teodoro');
+        const cardPirapozinho = document.getElementById('card-pirapozinho');
+
+        function trocarMapa(unidade) {
+            if (!mapaIframe) return;
+
+            let url = '';
+            if (unidade === 'teodoro') {
+                url = 'https://www.google.com/maps?q=Av.+Cuiab%C3%A1,+1969+-+Centro,+Teodoro+Sampaio+-+SP&output=embed';
+                cardTeodoro?.classList.add('active');
+                cardPirapozinho?.classList.remove('active');
+            } else if (unidade === 'pirapozinho') {
+                url = 'https://www.google.com/maps?q=R.+Penha+Barbosa+de+Castro,+648,+Pirapozinho+-+SP&output=embed';
+                cardPirapozinho?.classList.add('active');
+                cardTeodoro?.classList.remove('active');
+            }
+
+            mapaIframe.src = url;
+        }
+    </script>
 </body>
 </html>
