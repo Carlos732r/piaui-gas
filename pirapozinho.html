@@ -205,7 +205,7 @@
       top: -35px;        /* Puxa para cima para centralizar (ajuste conforme precisar) */
       left: 0;
       
-      height: 180px;     /* AQUI VOCÊ AUMENTA O TAMANHO QUE QUISER */
+      height: 180px;     /* TAMANHO DESKTOP MANTIDO */
       width: auto;
       transition: var(--transition);
       z-index: 1100;     /* Garante que fique acima do fundo do site */
@@ -317,6 +317,25 @@
 
       .menu-toggle {
         display: flex;
+      }
+
+      /* CONFIGURAÇÃO DA LOGO NO MOBILE (AUMENTADA) */
+      .logo-container {
+        position: relative;
+        height: 50px; /* Mantém a barra do header fina */
+        width: 160px; /* Dá espaço lateral */
+        z-index: 1002;
+      }
+      .logo-container img {
+        position: absolute;
+        /* AUMENTADO AQUI PARA 160px PARA FICAR GRANDE NO MOBILE */
+        height: 160px !important; /* Força a altura */
+        width: auto !important;   /* Deixa a largura automática */
+        max-width: none !important; /* CORREÇÃO: Impede que o container limite a largura da imagem */
+        /* AJUSTADO TOP PARA CENTRALIZAR VERTICALMENTE */
+        top: -45px;     
+        left: 0;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
       }
 
       /* Estilo da lista de links no mobile */
@@ -975,8 +994,12 @@
     }
 
     .sobre-imagem-card img {
-      max-width: 100%;
+      display: block;
+      width: 100%;
+      max-width: 900px; /* evita ampliar além da resolução nativa */
       height: auto;
+      object-fit: contain;
+      margin: 0 auto;
       border-radius: 15px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
@@ -1308,7 +1331,6 @@
 
     .endereco-completo i {
       color: var(--vermelho-principal);
-      font-size: 1.2rem;
     }
     /* ========== CONTATO - CARDS DE COMUNICAÇÃO ========== */
     .section-contato {
@@ -1621,26 +1643,6 @@
         padding: 12px 20px;
       }
 
-     .logo-container {
-      position: relative;
-      /* Define a altura "falsa" do menu para ele não crescer */
-      height: 50px; 
-      width: 200px; /* Espaço lateral reservado */
-      z-index: 1002; /* Garante que a logo fique acima do menu toggle */
-    }
-    .logo-container img {
-      /* Permite que a logo cresça sem esticar o menu */
-      position: absolute;
-      
-      /* AUMENTAR AQUI O TAMANHO NO CELULAR */
-      height: 200px;
-      top: -0px;    
-      left: 0;
-      
-      /* Sombra para destacar do fundo branco se vazar para fora */
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-    }
-
       /* Hero Mobile */
       .hero-section {
         margin-top: 110px;
@@ -1912,8 +1914,9 @@
         padding: 8px 10px;
       }
 
+      /* AQUI NO MOBILE PEQUENO TAMBÉM MANTEMOS ELA GRANDE */
       .logo-container img {
-        height: 50px;
+        height: 150px !important; /* Levemente menor que 160px para telas muito pequenas */
       }
 
       .hero-titulo {
@@ -1983,7 +1986,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-  </style>
+ </style>
 
 </head>
 <body>
@@ -2595,7 +2598,7 @@
 
     // ========== HEADER SCROLL EFFECT ==========
     let lastScroll = 0;
-    
+      
     window.addEventListener('scroll', () => {
       const currentScroll = window.pageYOffset;
       
