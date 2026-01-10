@@ -796,7 +796,7 @@
                       Teodoro Sampaio <br><small>(18) 99714-6344</small>
                 </button>
                 <button class="btn-unidade" onclick="redirecionarWhatsApp('pirapozinho')">
-                      Pirapozinho <br><small>(18) 99731-1964</small>
+                      Pirapozinho <br><small>(18) 99731-4964</small>
                 </button>
             </div>
         </div>
@@ -867,7 +867,7 @@
             if (unidade === 'teodoro') {
                 numero = '5518997146344';
             } else if (unidade === 'pirapozinho') {
-                numero = '5518997311964';
+                numero = '5518997314964';
             }
 
             let mensagem = 'Olá! Vim pelo site da Piauí Gás.';
@@ -1043,7 +1043,7 @@
                 if (cidade.value === 'Teodoro Sampaio') {
                     numero = '5518997146344';
                 } else if (cidade.value === 'Pirapozinho') {
-                    numero = '5518997311964';
+                    numero = '5518997314964';
                 }
 
                 // Enviar via WhatsApp
@@ -1061,7 +1061,7 @@
 
         // --- REDIRECIONAMENTO DIRETO PARA ÁGUA (PIRAPOZINHO) ---
         function redirecionarAguaPirapozinho() {
-            const numeroPirapozinho = '5518997311964';
+            const numeroPirapozinho = '5518997314964';
             const mensagem = 'Olá! Gostaria de pedir um Galão de Água.';
             const url = `https://wa.me/${numeroPirapozinho}?text=${encodeURIComponent(mensagem)}`;
             window.open(url, '_blank');
