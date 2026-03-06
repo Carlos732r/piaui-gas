@@ -207,13 +207,31 @@
 
     /* Conteúdo principal (com botijão de fundo) */
     .container {
-      background: url('Gas/botijao.png') no-repeat right center;
+      background: url('imagens/imagem1.jpeg') no-repeat right center;
       background-size: cover;
       padding: 60px 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 100vh;
+      position: relative;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.45); /* Efeito escuro */
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container > * {
+      position: relative;
+      z-index: 1;
     }
 
     /* ALTERAÇÕES DE COR E TAMANHO */
@@ -225,7 +243,7 @@
     .logo-text {
       font-size: 48px;
       font-weight: bold;
-      color: #0033ff;
+      color: #f58900;
     }
     
     .slogan {
@@ -233,13 +251,13 @@
       font-weight: bold;
       margin-top: 30px;
       line-height: 1.2;
-      color: #0033ff;
+      color: #f58900;
     }
     
     .servicos {
       font-size: 36px;
       margin: 20px 0;
-      color: #0033ff;
+      color: #ffffff;
     }
     
     .zap-btn {
@@ -903,12 +921,12 @@
   </div>
 
   <section class="section">
-    <h2>Por que comprar Nacional Gás?</h2>
-    <p>O gás da Nacional Gás é sinônimo de qualidade, segurança e economia para o seu dia a dia. Com alto rendimento e inspeção rigorosa, garante um preparo mais eficiente dos alimentos e total tranquilidade para sua família. Presente em milhões de lares, a Nacional Gás é uma marca confiável, com tradição no mercado e compromisso com o consumidor, oferecendo um produto seguro, durável e com entrega rápida.</p>
+    <h2>Por que comprar Supergasbras?</h2>
+    <p>O gás da Supergasbras é sinônimo de qualidade, segurança e economia para o seu dia a dia. Com alto rendimento e inspeção rigorosa, garante um preparo mais eficiente dos alimentos e total tranquilidade para sua família. Presente em milhões de lares, a Supergasbras é uma marca confiável, com tradição no mercado e compromisso com o consumidor, oferecendo um produto seguro, durável e com entrega rápida.</p>
   </section>
 
   <section class="section">
-    <img src="Gas/botijaoanimado.png" alt="Informativo" style="max-width: 100%; height: auto; width: 400px; border-radius: 12px;">
+    <img src="imagens/mascote.png" alt="Informativo" style="max-width: 100%; height: auto; width: 500px; border-radius: 12px;">
   </section>
 
   <section class="section" id="produtos">
@@ -926,17 +944,12 @@
         </a>
         <p>Gás P45</p>
       </div>
+    
       <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20Carv%C3%A3o%20" target="_blank">
-          <img src="Gas/carvão.png" alt="Carvão Vegetal">
+        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20Água" target="_blank">
+          <img src="imagens/galao.png" alt="Água">
         </a>
-        <p>Carvão Vegetal - 3 e 5kg</p>
-      </div>
-      <div class="produto-item">
-        <a href="https://wa.me/5518997146344?text=Vim%20pelo%20site%20e%20gostaria%20de%20pedir%20Registro%20ou%20Acess%C3%B3rios" target="_blank">
-          <img src="Gas/registro.png" alt="Registro">
-        </a>
-        <p>Registro e Acessórios </p>
+        <p> Galão de Água </p>
       </div>
     </div>
   </section>
@@ -960,9 +973,7 @@
                       <option value="" disabled selected>Selecione um produto</option>
                       <option value="Gás P13">Gás P13</option>
                       <option value="Gás P45">Gás P45</option>
-                      <option value="Carvão Vegetal 3kg">Carvão Vegetal 3kg</option>
-                      <option value="Carvão Vegetal 5kg">Carvão Vegetal 5kg</option>
-                      <option value="Registro e Acessórios">Registro e Acessórios</option>
+                      <option value="Água">Água</option>
                   </select>
               </div>
               <div class="form-group">
@@ -1004,7 +1015,7 @@
   <section class="section" id="sobre" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; text-align: left;">
     <div style="flex: 1; min-width: 300px;">
       <h2>Sobre Nós</h2>
-      <p>Somos revendedores de Gás GLP, atuando com responsabilidade, agilidade e compromisso com a sua segurança. Representamos a <strong>Nacional Gás</strong>, uma das marcas mais confiáveis do país, com mais de <strong>70 anos de atuação</strong> no mercado, levando energia segura para milhões de lares brasileiros.</p>
+      <p>Somos revendedores de Gás GLP, atuando com responsabilidade, agilidade e compromisso com a sua segurança. Representamos a <strong>Supergasbras</strong>, uma das marcas mais confiáveis do país, com mais de <strong>80 anos de atuação</strong> no mercado, levando energia segura para milhões de lares brasileiros.</p>
       <p style="margin-top: 15px;">A <strong>Piauí Gás</strong> tem mais de <strong>30 anos de experiência</strong> no setor, e estamos legalmente estabelecidos com o CNPJ <strong>51.508.998/0001-70</strong>. Nossa missão é garantir praticidade, confiança e atendimento de qualidade em cada entrega.</p>
     </div>
     <div style="flex: 1; min-width: 300px;" id="fale-conosco">
@@ -1043,7 +1054,7 @@
 
   <div class="fornecedor" style="text-align: center; padding: 30px 0 10px; font-weight: bold; color: red; font-size: 1.3em;">
     Fornecedor:<br>
-    <img src="Gas/nacional.png" alt="Logo Nacional Gás" style="margin-top: 10px; max-height: 160px;">
+    <img src="imagens/logosupergas.png" alt="Logo Nacional Gás" style="margin-top: 10px; max-height: 160px;">
   </div>
 
   <footer>
