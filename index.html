@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         /* --- RESET E GERAL --- */
@@ -526,6 +526,7 @@
                         <a href="teodoro.html">Teodoro Sampaio</a>
                         <a href="pirapozinho.html">Pirapozinho</a>
                         <a href="tarabai.html">Tarabaí</a>
+                        <a href="venceslau.html">Presidente Venceslau</a>
                     </div>
                 </li>
                 <li><a href="#sobre"><i class="fas fa-info-circle"></i> Sobre</a></li>
@@ -540,7 +541,7 @@
 
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <h1><span style="color: #333fe2;">Piauí</span> <span style="color: #FF0000;">Gás</span> presente em<br>Teodoro, Pirapozinho e Tarabaí</h1>
+            <h1><span style="color: #333fe2;">Piauí</span> <span style="color: #FF0000;">Gás</span> presente em<br>Teodoro, Pirapozinho, Tarabaí e Venceslau</h1>
             
             <div class="hero-buttons">
                 <a href="teodoro.html" class="btn-redirect">
@@ -551,6 +552,9 @@
                 </a>
                 <a href="tarabai.html" class="btn-redirect">
                     <i class="fas fa-car-side"></i> Tarabaí
+                </a>
+                <a href="venceslau.html" class="btn-redirect">
+                    <i class="fas fa-map-marker-alt"></i> Presidente Venceslau
                 </a>
             </div>
         </div>
@@ -630,6 +634,7 @@
                         <option value="">Selecione a cidade</option>
                         <option value="Teodoro Sampaio">Teodoro Sampaio</option>
                         <option value="Pirapozinho">Pirapozinho</option>
+                        <option value="Presidente Venceslau">Presidente Venceslau</option>
                     </select>
                     <div class="error-message">Por favor, selecione uma cidade</div>
                 </div>
@@ -639,7 +644,7 @@
                     <select id="produto" name="produto" required>
                         <option value="">Selecione um produto</option>
                         <option value="P13 - 13kg">P13 - 13kg</option>
-                        <option value="P45 - 45kg">P45 - 45kg</option>
+                        <option value="P45 - 45kg" id="opcaoP45">P45 - 45kg</option>
                         <option value="Galão de Água" id="opcaoAgua">Galão de Água</option>
                     </select>
                     <div class="error-message">Por favor, selecione um produto</div>
@@ -696,6 +701,14 @@
                     <li><em>*Feriados sujeitos a alteração.</em></li>
                 </ul>
             </div>
+            <div class="horario-card">
+                <h3>Presidente Venceslau</h3>
+                <ul>
+                    <li>Segunda à Sábado: 08:00h às 21:00h</li>
+                    <li>Domingo: 08:00h às 14:00h</li>
+                    <li><em>*Feriados sujeitos a alteração.</em></li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -712,6 +725,11 @@
             <div class="map-card" id="card-pirapozinho" onclick="trocarMapa('pirapozinho')">
                 <h3>Pirapozinho</h3>
                 <p>R. Penha Barbosa de Castro, 648, Pirapozinho - SP, 19200-000</p>
+            </div>
+
+            <div class="map-card" id="card-venceslau" onclick="trocarMapa('venceslau')">
+                <h3>Presidente Venceslau</h3>
+                <p>Av. Jorge Tibiriça, 921 - Vila Festi, Presidente Venceslau - SP</p>
             </div>
         </div>
 
@@ -766,6 +784,27 @@
                     </a>
                 </div>
             </div>
+
+            <div class="contato-card">
+                <h3>Presidente Venceslau</h3>
+                <p class="lead">Nossos contatos:</p>
+                <ul class="contato-list">
+                    <li class="contato-item"><i class="fab fa-whatsapp" style="color:#25D366; font-size:1.2rem;"></i>WhatsApp: <a href="https://wa.me/5518997018010" target="_blank" rel="noopener" style="color:#0047AB; text-decoration:none; font-weight:700;">(18) 99701-8010</a></li>
+                    <li class="contato-item"><i class="fas fa-envelope" style="color:#0047AB; font-size:1.1rem;"></i>E-mail: <a href="mailto:piauigaspg@gmail.com" style="color:#0047AB; text-decoration:none; font-weight:700;">piauigaspg@gmail.com</a></li>
+                </ul>
+                <div class="contato-links">
+                    <br><span style="font-weight:700; color:#333;">Siga-nos:</span>
+                    <a href="https://www.facebook.com/groups/1620191381346445/user/61594188056362/" target="_blank" rel="noopener">
+                        <img src="imagens/face.png" alt="Facebook">Facebook
+                    </a>
+                    <a href="https://www.instagram.com/piauigas_venceslau/" target="_blank" rel="noopener">
+                        <img src="imagens/insta.png" alt="Instagram">Instagram
+                    </a>
+                    <a href="https://www.threads.net/@piauigas_venceslau" target="_blank" rel="noopener">
+                        <i class="fab fa-threads" style="width:20px; text-align:center; color:#333;"></i> Threads
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -804,6 +843,9 @@
                 </button>
                 <button class="btn-unidade" onclick="redirecionarWhatsApp('tarabai')">
                       Tarabaí (Carro de Som) <br><small>(18) 99673-6014</small>
+                </button>
+                <button class="btn-unidade" onclick="redirecionarWhatsApp('venceslau')">
+                      Presidente Venceslau <br><small>(18) 99701-8010</small>
                 </button>
             </div>
         </div>
@@ -877,6 +919,8 @@
                 numero = '5518997314964';
             } else if (unidade === 'tarabai') {
                 numero = '5518996736014';
+            } else if (unidade === 'venceslau') {
+                numero = '5518997018010';
             }
 
             let mensagem = 'Olá! Vim pelo site da Piauí Gás.';
@@ -944,13 +988,22 @@
         const pedidoForm = document.getElementById('pedidoForm');
         const cidadeSelect = document.getElementById('cidade');
         const opcaoAgua = document.getElementById('opcaoAgua');
+        const opcaoP45 = document.getElementById('opcaoP45');
         const produtoSelect = document.getElementById('produto');
 
-        // Mostrar/ocultar galão de água conforme a cidade
+        // Mostrar/ocultar opções de produto conforme a cidade
         cidadeSelect.addEventListener('change', () => {
-            if (cidadeSelect.value === 'Teodoro Sampaio') {
+            if (cidadeSelect.value === 'Presidente Venceslau') {
+                // Unidade nova vende apenas P13: oculta P45 e Água
+                opcaoAgua.style.display = 'none';
+                opcaoP45.style.display = 'none';
+                if (produtoSelect.value === 'Galão de Água' || produtoSelect.value === 'P45 - 45kg') {
+                    produtoSelect.value = '';
+                }
+            } else if (cidadeSelect.value === 'Teodoro Sampaio') {
                 // Ocultar opção de galão
                 opcaoAgua.style.display = 'none';
+                opcaoP45.style.display = 'block';
                 // Se galão foi selecionado, limpar
                 if (produtoSelect.value === 'Galão de Água') {
                     produtoSelect.value = '';
@@ -958,8 +1011,10 @@
             } else if (cidadeSelect.value === 'Pirapozinho') {
                 // Mostrar opção de galão
                 opcaoAgua.style.display = 'block';
+                opcaoP45.style.display = 'block';
             } else {
                 opcaoAgua.style.display = 'none';
+                opcaoP45.style.display = 'block';
             }
         });
 
@@ -1053,6 +1108,8 @@
                     numero = '5518997146344';
                 } else if (cidade.value === 'Pirapozinho') {
                     numero = '5518997314964';
+                } else if (cidade.value === 'Presidente Venceslau') {
+                    numero = '5518997018010';
                 }
 
                 // Enviar via WhatsApp
@@ -1080,11 +1137,13 @@
         const mapaIframe = document.getElementById('mapaIframe');
         const cardTeodoro = document.getElementById('card-teodoro');
         const cardPirapozinho = document.getElementById('card-pirapozinho');
+        const cardVenceslau = document.getElementById('card-venceslau');
 
         // Links de Embed REAIS (Aproximados para os endereços fornecidos)
         const mapsLinks = {
             'teodoro': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3687.2924429163914!2d-52.16541782482347!3d-22.530163779495096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94951aa7e1e3e361%3A0x6efb9f3c0c207e8c!2sAv.%20Cuiab%C3%A1%2C%201969%20-%20Centro%2C%20Teodoro%20Sampaio%20-%20SP%2C%2019290-000!5e0!3m2!1spt-BR!2sbr!4v1719521234567', 
-            'pirapozinho': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.055666352776!2d-51.502558524708206!3d-22.275881079704103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94938d0033b99e63%3A0xd16800fab098b853!2sPiau%C3%AD%20G%C3%A1s%20Pirapozinho!5e0!3m2!1spt-BR!2sbr!4v1772808661926!5m2!1spt-BR!2sbr'
+            'pirapozinho': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.055666352776!2d-51.502558524708206!3d-22.275881079704103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94938d0033b99e63%3A0xd16800fab098b853!2sPiau%C3%AD%20G%C3%A1s%20Pirapozinho!5e0!3m2!1spt-BR!2sbr!4v1772808661926!5m2!1spt-BR!2sbr', 
+            'venceslau': 'https://maps.google.com/maps?q=Avenida%20Jorge%20Tibiri%C3%A7a%2C%20921%2C%20Presidente%20Venceslau%2C%20SP&z=16&output=embed'
         };
 
         function trocarMapa(unidade) {
@@ -1095,10 +1154,17 @@
                 url = mapsLinks['teodoro'];
                 cardTeodoro?.classList.add('active');
                 cardPirapozinho?.classList.remove('active');
+                cardVenceslau?.classList.remove('active');
             } else if (unidade === 'pirapozinho') {
                 url = mapsLinks['pirapozinho'];
                 cardPirapozinho?.classList.add('active');
                 cardTeodoro?.classList.remove('active');
+                cardVenceslau?.classList.remove('active');
+            } else if (unidade === 'venceslau') {
+                url = mapsLinks['venceslau'];
+                cardVenceslau?.classList.add('active');
+                cardTeodoro?.classList.remove('active');
+                cardPirapozinho?.classList.remove('active');
             }
 
             mapaIframe.src = url;

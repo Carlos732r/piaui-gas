@@ -26,6 +26,12 @@
   </url>
 
   <url>
+    <loc>https://piauigas.com.br/venceslau.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://piauigas.com.br/privacidade.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
